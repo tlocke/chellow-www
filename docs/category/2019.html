@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chellow | articles in the "2019" category</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tony Locke" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+
+                <li class="ephemeral selected"><a href="/category/2019.html">2019</a></li>
+                <li><a href="/archives">Archives</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="/">Chellow</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Aug 26, 2019</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/introduction.html" rel="bookmark" title="Permanent Link to &quot;Introduction&quot;">Introduction</a>
+                </h2>
+
+                
+                
+
+                <p>Chellow is an open source web application for checking UK electricity and gas
+bills for large organisations. It's been used in production since early 2006,
+and so it's about time it had its own website, besides the <a href="https://github.com/WessexWater/chellow">GitHub site</a> where the code is hosted.</p>
+<p>Chellow is suitable for organisations for which one or more of the following is
+true:</p>
+<ul>
+<li>Large number of supplies.</li>
+<li>High energy usage.</li>
+<li>Complex contract. </li>
+</ul>
+<p>Supplier bills are imported into Chellow, and then they are checked by
+comparing them to virtual bills that are created by Chellow. Any differences
+are due to either the actual bill being incorrect or the virtual bill being
+incorrect. Once errors in the virtual bill have been corrected, any remaining
+differences can be queried with the supplier. The idea is that at the end of
+the process, the organisation can be sure that it's paying the correct amount
+for its electricity and gas.</p>
+<p>Some of the features of Chellow are:</p>
+<ul>
+<li>Automatic downloading of half-hourly data from data collector sites. The
+  data is checked for missing data and estimates and a live list of errors is
+  maintained. This can be sent to the data collector so that they can correct
+  the errors.</li>
+<li>Based on <a href="https://www.elexon.co.uk/operations-settlement/market-domain-data/">Market Domain Data</a>.</li>
+<li>Uses Loss Adjustment Factors from Elexon to calculate GSP kWh.</li>
+<li>Uses Transmission Loss Multipliers from the National Grid to calculated
+  NBP kWh.</li>
+<li>Has several built-in tariff elements, including:</li>
+<li>DNUoS</li>
+<li>TNUoS</li>
+<li>AAHEDC</li>
+<li>CCL</li>
+<li>RO</li>
+<li>Chellow also handles exported, generated and displaced electricity.</li>
+</ul>
+<p>As a result of the bill checking process, Chellow ends up with a good dataset
+of electricity that has been used by the organisation. This can then be used
+for monthly reports for finance, purchasing and operations departments. Chellow
+also ends up with a good model of electricity costs, which can be run under
+different scenarios to answer questions such as: how much money would be saved
+if a solar panel were to be installed?</p>
+<p>So that's an overview of Chellow, and I've probably missed a lot out. There are
+all sorts of good ideas for this site, such as screenshots, tutorials and
+videos. So if you'd like to contribute please do.</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/introduction.html">posted at 14:31</a>
+                    &nbsp;&middot;&nbsp;<a href="/category/2019.html" rel="tag">2019</a>
+                </div>
+            </article>
+
+            <div class="clear"></div>
+            <footer>
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="/theme/images/cc.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>
