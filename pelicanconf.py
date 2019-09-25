@@ -19,6 +19,11 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+MENUITEMS = (
+    ('Archive', '/archives.html'),
+    ('GitHub', 'https://github.com/WessexWater/chellow')
+)
+
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
@@ -33,17 +38,21 @@ DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
-THEME = "/home/tlocke/chellow-www/themes/blue-penguin"
+THEME = "/home/tlocke/chellow-www/themes/simple"
 DISPLAY_HEADER = True
 DISPLAY_FOOTER = True
 DISPLAY_HOME = False
 DISPLAY_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = False
 
-ARCHIVES_URL = 'archives'
-ARCHIVES_SAVE_AS = 'archives/index.html'
+YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
+MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%b}/index.html'
+DIRECT_TEMPLATES = (
+    'index', 'tags', 'categories', 'archives', 'period_archives'
+)
 
 MENU_INTERNAL_PAGES = (
-    ('Archives', ARCHIVES_URL, ARCHIVES_SAVE_AS),
+    #     ('Archives', ARCHIVES_URL, ARCHIVES_SAVE_AS),
 )
 OUTPUT_PATH = 'docs'
 STATIC_PATHS = ['images', 'extra/CNAME']
