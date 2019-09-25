@@ -46,3 +46,5 @@ MENU_INTERNAL_PAGES = (
     ('Archives', ARCHIVES_URL, ARCHIVES_SAVE_AS),
 )
 OUTPUT_PATH = 'docs'
+STATIC_PATHS = ['images', 'extra/CNAME']
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}, }
