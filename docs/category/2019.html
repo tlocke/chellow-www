@@ -22,58 +22,54 @@
           <li>
             <article>
               <header>
-                <h2 class="entry-title"><a href="/introduction.html">Introduction</a></h2>
+                <h2 class="entry-title"><a href="/missing-bill-elements-that-arent-missing.html">Missing Bill Elements That Aren't Missing</a></h2>
               </header>
 <footer class="post-info">
-        <abbr class="published" title="2019-08-26T14:31:00+01:00">
-                Published: Mon 26 August 2019
+        <abbr class="published" title="2019-11-09T10:38:00+00:00">
+                Published: Sat 09 November 2019
         </abbr>
 
 
-</footer><!-- /.post-info --><p>Chellow is an open source web application for checking UK electricity and gas
+</footer><!-- /.post-info --><p>TL;DR The bill check no longer says that bills are missing when they're not.</p>
+<p>A Chellow user (we'll call them Jem) said to me, 'When I run the bill check it
+says that some bills are missing when they aren't'.</p>
+<p><img alt="Screenshot of bill check link" src="/images/2019/2019-11-09_screenshot1.png"></p>
+<p>Some background: when a bill check is run, you get back a report of the
+differences between the actual bill (received from the supplier) and the
+virtual bill (created by Chellow). You also get a list of missing bill
+elements, for example, say the virtual bill has the element <code>duos-fixed-gbp</code>,
+but the actual bill doesn't, then the report will say that the <code>duos-fixed-gbp</code>
+bill is missing.</p>
+<p>So Jem was checking a single
+<a href="https://en.wikipedia.org/wiki/Electricity_billing_in_the_UK#Transmission_charges">TRIAD</a> bill that spanned an entire year. (It would have been so much easier
+if the supplier had just made it span March, but then we have to deal with
+whatever's thrown at us.) So Jem's bill only had TRIAD charges in, but all the
+other bills for that supply were present and correct, so the bill check
+should have given a clean bill of health, but in fact it was saying that some
+bills were missing. This kind of false positive was really annoying for Jem
+because it meant that they had to check for something that wasn't actually a
+problem.</p>
+<p>To solve the problem we've had to make Chellow generate bills at the
+half-hourly level. That is to say, each half-hour has it's own virtual bill.
+That way we can accurately say if there are any missing bills. It was quite a
+big undertaking, but well worth it.</p>            </article>
+          </li>
+          <li>
+              <article class="hentry">
+                <header>
+                  <h2 class="entry-title"><a href="/introduction.html" rel="bookmark" title="Permalink to Introduction">Introduction</a>
+                  </h2>
+                </header>
+                <footer class="post-info">
+                  <time class="published" datetime="2019-08-26T14:31:00+01:00"> Mon 26 August 2019 </time>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>Chellow is an open source web application for checking UK electricity and gas
 bills for large organisations. It's been used in production since early 2006,
 and so it's about time it had its own website, besides the <a href="https://github.com/WessexWater/chellow">GitHub site</a> where the code is hosted.</p>
-<p>Chellow is suitable for organisations for which one or more of the following is
-true:</p>
-<ul>
-<li>Large number of supplies.</li>
-<li>High energy usage.</li>
-<li>Complex contract. </li>
-</ul>
-<p>Supplier bills are imported into Chellow, and then they are checked by
-comparing them to virtual bills that are created by Chellow. Any differences
-are due to either the actual bill being incorrect or the virtual bill being
-incorrect. Once errors in the virtual bill have been corrected, any remaining
-differences can be queried with the supplier. The idea is that at the end of
-the process, the organisation can be sure that it's paying the correct amount
-for its electricity and gas.</p>
-<p>Some of the features of Chellow are:</p>
-<ul>
-<li>Automatic downloading of half-hourly data from data collector sites. The
-  data is checked for missing data and estimates and a live list of errors is
-  maintained. This can be sent to the data collector so that they can correct
-  the errors.</li>
-<li>Based on <a href="https://www.elexon.co.uk/operations-settlement/market-domain-data/">Market Domain Data</a>.</li>
-<li>Uses Loss Adjustment Factors from Elexon to calculate GSP kWh.</li>
-<li>Uses Transmission Loss Multipliers from the National Grid to calculated
-  NBP kWh.</li>
-<li>Has several built-in tariff elements, including:</li>
-<li>DNUoS</li>
-<li>TNUoS</li>
-<li>AAHEDC</li>
-<li>CCL</li>
-<li>RO</li>
-<li>Chellow also handles exported, generated and displaced electricity.</li>
-</ul>
-<p>As a result of the bill checking process, Chellow ends up with a good dataset
-of electricity that has been used by the organisation. This can then be used
-for monthly reports for finance, purchasing and operations departments. Chellow
-also ends up with a good model of electricity costs, which can be run under
-different scenarios to answer questions such as: how much money would be saved
-if a solar panel were to be installed?</p>
-<p>So that's an overview of Chellow, and I've probably missed a lot out. There are
-all sorts of good ideas for this site, such as screenshots, tutorials and
-videos. So if you'd like to contribute please do.</p>            </article>
+<p>Chellow is suitable for organisations for …</p>
+                <a class="readmore" href="/introduction.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article>
           </li>
     </ul><!-- /#posts-list -->
   </section><!-- /#content -->
