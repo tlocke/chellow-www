@@ -4,7 +4,7 @@ Date: 2020-01-04 18:31
 Chellow is an open source web application for checking the UK electricity and
 gas bills of large organisations. It's been used in production since early
 2006, and the code is hosted at
-[GitHub site](https://github.com/WessexWater/chellow).
+[GitHub](https://github.com/WessexWater/chellow).
 
 Chellow is suitable for organisations for which one or more of the following is
 true:
