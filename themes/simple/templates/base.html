@@ -43,19 +43,16 @@
       {% else %}
         <li><a href="/">Chellow</a></li>
       {% endif %}
-          
+
     {% for title, link in MENUITEMS %}
       {% if page_name == 'archives' and title == 'Archive' %}
+        <li>{{ title }}</li>
+      {% elif page and page.slug == 'about-chellow' and title == 'About' %}
         <li>{{ title }}</li>
       {% else %}
         <li><a href="{{ link }}">{{ title }}</a></li>
       {% endif %}
     {% endfor %}
-    {% if DISPLAY_PAGES_ON_MENU %}
-      {% for p in pages %}
-        <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-      {% endfor %}
-    {% endif %}
     {% if DISPLAY_CATEGORIES_ON_MENU %}
       {% for cat, null in categories %}
         <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>

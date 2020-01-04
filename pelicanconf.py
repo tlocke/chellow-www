@@ -20,6 +20,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 MENUITEMS = (
+    ('About', '/pages/about-chellow.html'),
     ('Archive', '/archives.html'),
     ('GitHub', 'https://github.com/WessexWater/chellow')
 )

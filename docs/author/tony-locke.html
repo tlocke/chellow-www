@@ -13,7 +13,8 @@
     </header><!-- /#banner -->
     <nav id="menu"><ul>
         <li><a href="/">Chellow</a></li>
-          
+
+        <li><a href="/pages/about-chellow.html">About</a></li>
         <li><a href="/archives.html">Archive</a></li>
         <li><a href="https://github.com/WessexWater/chellow">GitHub</a></li>
     </ul></nav><!-- /#menu -->
@@ -22,37 +23,62 @@
           <li>
             <article>
               <header>
-                <h2 class="entry-title"><a href="/missing-bill-elements-that-arent-missing.html">Missing Bill Elements That Aren't Missing</a></h2>
+                <h2 class="entry-title"><a href="/recent-changes-to-chellow.html">Recent changes to Chellow</a></h2>
               </header>
 <footer class="post-info">
-        <abbr class="published" title="2019-11-09T10:38:00+00:00">
-                Published: Sat 09 November 2019
+        <abbr class="published" title="2020-01-04T17:57:00+00:00">
+                Published: Sat 04 January 2020
         </abbr>
 
 
-</footer><!-- /.post-info --><p>TL;DR The bill check no longer says that bills are missing when they're not.</p>
+</footer><!-- /.post-info --><p>Here are some notes on recent changes to Chellow:</p>
+<ul>
+<li>We've begun to address the vexed question of clock-time and UTC. Clock-time
+  is what UK clocks say the time is, and it would seem obvious that this is
+  what Chellow should use. However, clock-time has two oddities that make it
+  difficult to use. Firstly there's an ambiguous time when the clocks go back,
+  and secondly there are missing times when the clocks go forward. For that
+  reason, Chellow uses UTC internally to keep things recorded and calculated in
+  a predictable and uniform way. However, that means that we're at odds with
+  the rest of the world, and so for any input / output between Chellow and the
+  user, a certain amount of mental gymnastics has to be performed to translate
+  between clock-time and UTC. To make things easier for people, we're aiming to
+  use clock-time for all input / output, while still using UTC internally.
+  The first thing to transition is the Monthly Duration report. Previously this
+  used to be specified in UTC months, but now it's in clock-time months. This
+  move to clock-time will carry on until all input / output is in clock-time.</li>
+<li>We fixed a bug in the calculation of reactive power for older meters with only
+  four channels.</li>
+<li>The Scenario Runner lets us run 'what if' scenarios, such as projecting the
+  new cost if a tariff is changed. Previously we'd used Supplier Contracts for
+  storing scenarios, but now they get their own table, and this has allowed us
+  to make the navigation simpler, and reduce the number of fields.</li>
+<li>It turns out that the reading frequency is a property of a gas supply and
+  that it affects the tariffs that apply. So reading frequency has now been
+  added as a property of each gas era.</li>
+<li>There was a bit of a problem when the automatic downloader for Elexon
+  RCRC data hung while waiting for data from a socket. A timeout has been
+  set for this, so it shouldn't be a problem any more.</li>
+<li>Gas NTS commodity rates have been entered for Oct 2019 to Mar 2020.</li>
+</ul>            </article>
+          </li>
+          <li>
+              <article class="hentry">
+                <header>
+                  <h2 class="entry-title"><a href="/missing-bill-elements-that-arent-missing.html" rel="bookmark" title="Permalink to Missing Bill Elements That Aren't Missing">Missing Bill Elements That Aren't Missing</a>
+                  </h2>
+                </header>
+                <footer class="post-info">
+                  <time class="published" datetime="2019-11-09T10:38:00+00:00"> Sat 09 November 2019 </time>
+                </footer><!-- /.post-info -->
+                <div class="entry-content"> <p>TL;DR The bill check no longer says that bills are missing when they're not.</p>
 <p>A Chellow user (we'll call them Jem) said to me, 'When I run the bill check it
 says that some bills are missing when they aren't'.</p>
 <p><img alt="Screenshot of bill check link" src="/images/2019/2019-11-09_screenshot1.png"></p>
-<p>Some background: when a bill check is run, you get back a report of the
-differences between the actual bill (received from the supplier) and the
-virtual bill (created by Chellow). You also get a list of missing bill
-elements, for example, say the virtual bill has the element <code>duos-fixed-gbp</code>,
-but the actual bill doesn't, then the report will say that the <code>duos-fixed-gbp</code>
-bill is missing.</p>
-<p>So Jem was checking a single
-<a href="https://en.wikipedia.org/wiki/Electricity_billing_in_the_UK#Transmission_charges">TRIAD</a> bill that spanned an entire year. (It would have been so much easier
-if the supplier had just made it span March, but then we have to deal with
-whatever's thrown at us.) So Jem's bill only had TRIAD charges in, but all the
-other bills for that supply were present and correct, so the bill check
-should have given a clean bill of health, but in fact it was saying that some
-bills were missing. This kind of false positive was really annoying for Jem
-because it meant that they had to check for something that wasn't actually a
-problem.</p>
-<p>To solve the problem we've had to make Chellow generate bills at the
-half-hourly level. That is to say, each half-hour has it's own virtual bill.
-That way we can accurately say if there are any missing bills. It was quite a
-big undertaking, but well worth it.</p>            </article>
+<p>Some background: when a bill check is run, you …</p>
+                <a class="readmore" href="/missing-bill-elements-that-arent-missing.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article>
           </li>
           <li>
               <article class="hentry">
