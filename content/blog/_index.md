@@ -1,7 +1,7 @@
 +++
 title = "Blog"
 sort_by = "date"
-extra.header_image = "logo-small.png"
+extra.header_image = "/halo.png"
 +++
 
 # Blog

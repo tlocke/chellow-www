@@ -1,6 +1,10 @@
 +++
 title = "Contact"
-template = "custom/contact.html"
+extra.header_image = "/halo.png"
 +++
 
-/!\ content in custom template
+## Contact Tony Locke
+
+* Email [tlocke@tlocke.org.uk](mailto:tlocke@tlocke.org.uk)
+
+* Matrix Chat [@tlocke:matrix.org](https://matrix.to/#/@tlocke:matrix.org)

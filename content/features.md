@@ -1,5 +1,6 @@
 +++
 title = "Features"
+extra.header_image = "/halo.png"
 +++
 
 Chellow is an open source web application for checking the UK electricity and

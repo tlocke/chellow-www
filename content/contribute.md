@@ -1,5 +1,6 @@
 +++
 title = "Contribute"
+extra.header_image = "/halo.png"
 +++
 
 # Contribute
