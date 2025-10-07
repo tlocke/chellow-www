@@ -1,7 +1,7 @@
-# chellow-www
-The website of Chellow
+# Chellow
 
-To view and generate locally do:
+The website of [Chellow](https://github.com/WessexWater/chellow)
 
-* `pelican -lr`
-* View at http://localhost:8000/
+To view locally do:
+
+* `zola serve`

@@ -1,0 +1,56 @@
+# The URL the site will be built for
+base_url = "https://www.chellow.org/"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+theme = "seagull"
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+[extra]
+# Put all your custom variables here
+name = "Chellow"
+logo = "logo.png"
+description = "The Open Source Web Application For Validating The Energy Bills Of Large UK Organisations"
+
+
+# Number of articles to display on homepage
+[extra.homepage]
+n_articles = 5
+
+# This configures the navigation menu
+[extra.nav]
+links = [
+    # "_index.md",
+    "features.md",
+    "contribute.md",
+    "contact.md",
+    "blog/_index.md",
+]
+
+# This configures the footer menu
+[extra.footer]
+links = [
+    "_index.md",
+    "about.md",
+    "contact.md",
+    "contribute.md",
+]
+
+# the following links will appear in the footer
+
+
+[extra.theme]
+toc_title = "Table of content"
+feed_thumb_height = 240
+
+[extra.theme.date]
+format="%Y-%m-%d"
+locale="en_US"

@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="icon" type="image/png" href="{{ get_url(path="logo-small.png") }}">
+<link rel="stylesheet" type="text/css" href="/css/form.css" />
+{% endblock extrahead %}
+
+{% block header %}
+<div class="hero row center" style="background-color: #1B317A; min-height: 30vh;">
+    <img src="/logo.png" style="height: 160px;" />
+</div>
+{% endblock header %}
+
+{% block content %}
+<main>
+    <div class="page">
+        <div class="col center">
+            <div style="max-width: min(800px, 95vw); font-size: larger;">
+                <h2 class="center">Contact Tony Locke</h2>
+                <p>Email <a href="mailto:tlocke@tlocke.org.uk">tlocke@tlocke.org.uk</a></p>
+		<p>
+		  Matrix Chat
+		  <a href="https://matrix.to/#/@tlocke:matrix.org">@tlocke:matrix.org</a>
+		</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock content %}
