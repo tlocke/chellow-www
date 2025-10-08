@@ -2,6 +2,7 @@
 
 The website of [Chellow](https://github.com/WessexWater/chellow)
 
-To view locally do:
+It's a statically generated site (generated using [Zola](https://www.getzola.org/)), and
+hosted on GitHub Pages. To view locally run:
 
 * `zola serve`

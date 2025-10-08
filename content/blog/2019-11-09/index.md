@@ -8,7 +8,7 @@ TL;DR The bill check no longer says that bills are missing when they're not.
 A Chellow user (we'll call them Jem) said to me, 'When I run the bill check it
 says that some bills are missing when they aren't'.
 
-![Screenshot of bill check link]({static}/images/2019/2019-11-09_screenshot1.png)
+![Screenshot of bill check link](2019-11-09_screenshot1.png)
 
 Some background: when a bill check is run, you get back a report of the
 differences between the actual bill (received from the supplier) and the

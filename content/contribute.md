@@ -8,7 +8,7 @@ extra.header_image = "/halo.png"
 Chellow is an Open Source project, and welcomes anyone who would like to contribute. Here's
 a non-exhaustive list of where help is needed:
 
-* This website. If you're keen on web design, this website could do with improvements.
+* This website. If you're keen on web design, visit the [GitHub site](https://github.com/tlocke/chellow-www) for this website to start making improvements.
 * Write a blog post for this website.
 * [Outreach](https://opensource.com/article/21/1/open-source-evangelist). We need help in reaching people who may benefit from using Chellow, but don't know about it.
 * Using Chellow. It would be good to have more users.
