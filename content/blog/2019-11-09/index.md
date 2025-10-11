@@ -1,6 +1,7 @@
 +++
 title = "Missing Bill Elements That Aren't Missing"
 date = 2019-11-09T10:38:00Z
+template = "blog_post.html"
 +++
 
 TL;DR The bill check no longer says that bills are missing when they're not.

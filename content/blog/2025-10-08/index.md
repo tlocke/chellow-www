@@ -1,6 +1,7 @@
 +++
 title = "Element-Level Billing"
 date = 2025-10-09T00:00:00Z
+template = "blog_post.html"
 +++
 
 An electricity bill is made up of many individual elements, each with a cost attached to

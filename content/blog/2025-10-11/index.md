@@ -1,6 +1,7 @@
 +++
 title = "Forecasting RAB costs appearing in December"
 date = 2025-10-11T00:00:00Z
+template = "blog_post.html"
 +++
 
 The RAB charge is a subsidy for nuclear generation that will appear as a separate item in
