@@ -1,0 +1,17 @@
+{% set url = article.permalink -%}
+<div class="feed-block">
+  <div class="feed-desc">
+    <h3><a href="{{url}}">{{ article.title | safe}}</a></h3>
+    {%- if article.description -%}<p>{{ article.description }}</p>{%- endif %}
+    <p>{{ article.content | striptags | truncate(length=200) }}<a href="{{ article.permalink }}#continue-reading">Continue Reading</a></p>
+  </div>
+  <div class="feed-tax">
+    {%- set tax = article.taxonomies %}
+    <span>
+      {% if tax.category %}<span>{{ macros::category(category=tax.category )}}</span>{% endif %}
+      {% if tax.authors %}<span>{{ macros::authors(authors=tax.authors )}}</span>{% endif %}
+      {% if tax.tags %}<span>{{ macros::tags(tags=tax.tags )}}</span>{% endif %}
+    </span>
+    {% if article.date %}<span class="date">{{ macros::date(date=article.date) }}</span>{% endif %}
+  </div>
+</div>
