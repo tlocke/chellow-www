@@ -3,8 +3,8 @@ title = "Contact"
 extra.header_image = "/halo.png"
 +++
 
-## Contact Tony Locke
+## Contact Us
 
-* Email [tlocke@tlocke.org.uk](mailto:tlocke@tlocke.org.uk)
+* Email [enquiries@chellow.org](mailto:enquiries@chellow.org)
 
 * Matrix Chat [@tlocke:matrix.org](https://matrix.to/#/@tlocke:matrix.org)
