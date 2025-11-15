@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | Forecasting NBP kWh</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2025-11-08/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="item"><div>Features</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+    
+  
+</nav>
+    
+<main class="page">
+  <h2>Forecasting NBP kWh</h2>
+  <p><em>2025-11-08</em></p>
+
+  <p>We've had a run of NBP kWh related posts (
+<a href="/blog/2025-10-25/">Calculating NBP</a> and
+<a href="/blog/2025-11-15/">NBP Reconciliations</a>, and this post rounds off the series by talking
+about forecasting NBP kWh.</p>
+<p>Even though actual TLMs are specific to the GSP Group and the particular half-hour,
+estimated TLMs (ETLMs) apply to all GSP Groups and cover whole months and sometimes
+multiple months. You can see the ETLMs on an
+<a href="https://www.elexon.co.uk/bsc/operational/transmission-losses/estimated-transmission-loss-adjustments/">Elexon webpage</a>, here's a screenshot:</p>
+<p><img src="https://www.chellow.org/blog/2025-11-08/screenshot_etlm_elexon.png" alt="ETLMs Elexon" /></p>
+<p>Further down on that page is a link to a CSV download of the ETLMs.</p>
+<p>As an aside, it's really frustrating that this link can't easily be automatically
+downloaded using a script, because it requires cookies, JavaScript etc and various
+protections to prevent automated access. Elexon do have a 'scriptable downloads' section
+on their portal, and I've written to them asking if they'd put the ETLMs there. In the
+meantime we download the file to the
+<a href="https://github.com/WessexWater/chellow-rates/tree/main/2025/electricity/etlms">rate repository</a>. Feel free to make use of this repository, it contains all the industry data that has
+to be manually downloaded, and can be accessed using the
+<a href="https://docs.github.com/en/rest">GitHub API</a>.</p>
+<p><img src="https://www.chellow.org/blog/2025-11-08/transmission_lines.jpeg" alt="Transmission Lines" /></p>
+<p>Okay, back to ETLMs. When <a href="https://www.chellow.org/">Chellow</a> sees that a new ETLM file has
+been added to the rate repository, it downloads it and stores the ETLMs in its database.
+ETLMs are useful for two things, firstly they are used for forecasting, because as you can
+see they go out to the end of this financial year. We can run the virtual bills in Chellow
+for a time in the future and it will calculate the expected costs using the ETLMs and other
+rates that apply at that future time.</p>
+<p>Secondly, ETLMs are useful as a basis for the (initial, before reconciliations) bill from
+the supplier. The first settlement run (with the code 'II') is 1 week after the time in
+question, and so suppliers might not be able to use this for all half-hours. What they can
+do instead is use the ETLMs, and then reconcile as updated actuals come in. The key thing
+is that the supplier should use a standard version for TLMs (either ETLMs, or one of the
+settlement runs). Otherwise, without knowing the TLM version we can't check that the bills
+are correct.</p>
+<p>See you next time! ✨</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

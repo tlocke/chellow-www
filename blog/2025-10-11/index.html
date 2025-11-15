@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | Forecasting RAB costs appearing in December</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2025-10-11/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="item"><div>Features</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+    
+  
+</nav>
+    
+<main class="page">
+  <h2>Forecasting RAB costs appearing in December</h2>
+  <p><em>2025-10-11</em></p>
+
+  <p>The RAB charge is a subsidy for nuclear generation that will appear as a separate item in
+bills for those with a pass-through contract. The first RAB charges will appear in bills
+for December's consumption. There are essentially two parts to the charges, Interim and
+Operational. This post focuses on forecasting the Interim element from published forecasts.</p>
+<p>I was pleased to see that the LCCC publish a feed of forecast interim RAB rates via an API. Chellow has a process that automatically checks the LCCC data portal every so often and
+updates feeds for CfD, and so it was relatively easy to add some code that also downloads
+the RAB forecast. I used the JSON format because its a bit easier to process
+programmatically, but here's the data in CSV format:</p>
+<p><img src="https://www.chellow.org/blog/2025-10-11/csv.png" alt="Screenshot Of CSV File" /></p>
+<p>The key bits of info for us are the <em>Month</em> column and the <em>Interim_Levy_Rate_GBP_Mwh</em>. I
+programmed Chellow to calculate for each month:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>RAB Interim GBP = Interim_Levy_Rate_GBP_Mwh / 1000 x (kWh in NBP)
+</span></code></pre>
+<p>A couple of things to note:</p>
+<ul>
+<li>The rate is divided by 1000 because it's in MWh, and we're working in kWh.</li>
+<li>The kWh is at NBP (Notional Balancing Point), which takes into account transmission and distribution losses.</li>
+</ul>
+<p>Finally, we run the virtual bill in Chellow for the future and see what we may need to pay
+in the coming months and years.</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

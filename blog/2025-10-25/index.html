@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | Calculating kWh at NBP</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2025-10-25/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="item"><div>Features</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+    
+  
+</nav>
+    
+<main class="page">
+  <h2>Calculating kWh at NBP</h2>
+  <p><em>2025-10-25</em></p>
+
+  <p>Before we get into NBP kWh, there's an update on the <a href="/blog/2025-10-18/">previous post</a> on
+finding DNO tariffs. I've heard from the industry body <a href="https://www.dcusa.co.uk/">DCUSA</a>
+that they're working on an API for DNO tariffs, which is great news. They caution that it's
+still in the early stages of development though.</p>
+<p>So, on to NBP. Many electricity tariffs are charged at NBP, for example the RAB charge I've <a href="/blog/2025-10-11/">talked about previously</a>. With the RAB interim charge, the cost is
+calculated as:</p>
+<p><code>(RAB Interim Charge £) = (Rab Rate) x (NBP kWh)</code></p>
+<p>MSP (Meter Supply Point) kWh is the amount of electricity measured at the meter. The kWh
+you see in the half-hourly data collected from the meter is at MSP. Before getting to the
+meter, the electricity has to go through the transmission and distribution networks.
+Transmission refers to the national grid:</p>
+<p><img src="https://www.chellow.org/blog/2025-10-25/pylon.jpeg" alt="Pylon in Thirsk" /></p>
+<p>and distribution refers to the local DNO network:</p>
+<p><img src="https://www.chellow.org/blog/2025-10-25/substation.jpg" alt="Substation" /></p>
+<p>NBP kWh is the amount of electricity before transmission and distribution losses occur. The amount of electricity before distribution losses is known as Grid Supply Point (GSP) kWh:</p>
+<p><code>GSP kWh = MSP kWh * LAF</code></p>
+<p>where the LAF is the Loss Adjustment Factor. NBP kWh is:</p>
+<p><code>NBP kWh = GSP kWh x TLM</code></p>
+<p>where TLM is the Transmission Loss Multiple. We'll concentrate on the TLM, which takes us
+from GSP to NBP. There's a different TLM for each half-hour, and for each region of the
+country. As a programmer working on Chellow, I'm pleased that Elexon makes the TLM data
+available for automatic download <a href="https://www.elexonportal.co.uk/">via their portal</a>. The
+regions of the country are known as GSP Groups, and every electricity supply is within a
+GSP Group. Here's a screenshot from Chellow showing the GSP Groups:</p>
+<p><img src="https://www.chellow.org/blog/2025-10-25/screenshot_gsp_groups.png" alt="GSP Groups" /></p>
+<p>Then if we run a virtual bill in Chellow, it would do the calculations for each half-hour
+and give us the following example result:</p>
+<p><img src="https://www.chellow.org/blog/2025-10-25/screenshot_virtual_bill.png" alt="RAB Element of Virtual Bill" /></p>
+<p>I've used RAB Interim as an example here, but the same principle applies to any element
+that's billed at NBP kWh.</p>
+<p>Hope you enjoyed this post, and see you next time!</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>
