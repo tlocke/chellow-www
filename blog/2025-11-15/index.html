@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | Calculating GSP kWh</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2025-11-15/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="item"><div>Features</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+    
+  
+</nav>
+    
+<main class="page">
+  <h2>Calculating GSP kWh</h2>
+  <p><em>2025-11-15</em></p>
+
+  <p>We've finished a run of posts on calculating kWh at NBP. As a reminder, electricity travels
+through the transmission system, then through the distribution system and then ends up
+being measured at the meter, MSP (Meter Supply Point). The transmission losses are known as
+TLMs (Transmission Loss Multipliers) and the distribution losses are known as LAFs (Loss
+Adjustment Factors). Here's the formula for NBP for every half-hour:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>(NBP kWh) = (GSP kWh) x TLM
+</span></code></pre>
+<p>In this article we'll be focussing on calculating the <em>GSP</em> (Grid Supply Point) kWh, which
+is the amount of electricity entering the distribution system:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>(GSP kWh) = (MSP kWh) x LAF
+</span></code></pre>
+<p><img src="https://www.chellow.org/blog/2025-11-15/substation.jpg" alt="UK Electricity Distribution Substation" /></p>
+<p>The LAFs are downloadable from the <a href="https://www.elexonportal.co.uk/">Elexon Portal</a>, and
+they get downloaded every so often into Chellow:</p>
+<p><img src="https://www.chellow.org/blog/2025-11-15/screenshot_chellow_elexon_download.png" alt="Elexon Download in Chellow" /></p>
+<p>You can see I've blurred out my scripting key in the URL, but it's free to get one. You'll
+also notice that you need to specify the Participant Code of the DNO that you want to
+download the LAFs for. In this case the code is SOUT, which is the code for DNO 20. A DNO
+has many LLFCs (Line Loss Factor Classes) and every LLFC has a LAF for every half-hour.
+Every supply has an LLFC. Let's have a look at the LAFs for DNO 20 and LLFC 033 in Chellow:</p>
+<p><img src="https://www.chellow.org/blog/2025-11-15/screenshot_chellow_lafs.png" alt="LAFs in Chellow" /></p>
+<p>This tells us that if a supply with LLFC 033 has, say, 1 kWh of consumption at the meter
+between 01:30 and 02:00 on 1st November 2025, the GSP consumption will be 1.074 kWh. When
+we come to do a bill check in Chellow, it'll automatically calculate GSP kWh, for example
+here's the bill check for the RAB Interim element of a bill, with NBP kWh (which involves
+first finding GSP kWh):</p>
+<p><img src="https://www.chellow.org/blog/2025-11-15/screenshot_chellow_bill_check.png" alt="Chellow bill check of RAB element of a bill" /></p>
+<p>See you next time! ✨</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

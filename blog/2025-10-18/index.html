@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | Finding DNO Tariffs</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2025-10-18/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="item"><div>Features</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+    
+  
+</nav>
+    
+<main class="page">
+  <h2>Finding DNO Tariffs</h2>
+  <p><em>2025-10-18</em></p>
+
+  <p>In a pass-through electricity contract, one of the things that is often passed through are
+the Distribution Use of System (DUoS) charges from the Distribution Network Operators
+(<a href="https://en.wikipedia.org/wiki/Distribution_network_operator">DNOs</a>. The DNOs publish
+their tariffs in an MS-Excel spreadsheet, which they put on their website. An example is
+<a href="https://www.ssen.co.uk/globalassets/library/charging-statements-sepd/202526/sepd---schedule-of-charges-and-other-tables---april-2025-v0.3.xlsx">SSE's charging statement for 24/25</a>.</p>
+<p>As a developer working on the <a href="https://www.chellow.org/">Chellow</a> bill validation system,
+I need to make sure that all the correct DNO tariffs are held in Chellow so that we can
+check that the DNO charges in each bill are correct. Here's a screenshot from Chellow
+showing a bill check for DUoS Green:</p>
+<p><img src="https://www.chellow.org/blog/2025-10-18/bill_check.png" alt="Bill Check of DUoS Green Element" /></p>
+<p>The table on the left shows that we've been overcharged by £14.28, and that the rate was
+correct, but the error was in the kWh. Chellow gets the virtual rate from its database of
+DUoS rates, which comes from the DNO's spreadsheets.</p>
+<p>One brilliant thing about the DNO's spreadsheets is that even though they're produced by
+all the different DNOs, they're all in the same format, which makes parsing them a lot
+easier. A problem though, is that it's difficult to automate finding and downloading the
+spreadsheets, as they're scattered over the web. So what we've done is manually maintain a
+repository of DNO spreadsheets at:</p>
+<p><a href="https://github.com/WessexWater/chellow-rates">https://github.com/WessexWater/chellow-rates</a></p>
+<p>This is freely available for anyone to use. You click on the year you're interested in,
+then <code>electricity</code> -&gt; <code>duos</code> -&gt; and the DNO code, and then you should
+find the DNO spreadsheet, which you can download with the <code>Download Raw File</code>
+button. If the DNO you need isn't there, just let me know and I'll add it in.</p>
+<p>While adding the DNO spreadsheets to the repository is a manual process, it only has to be
+done once, and then each instance of Chellow can automatically import the spreadsheets
+using the <a href="https://docs.github.com/en/rest">GitHub API</a>. The API is free to use, so you're
+welcome to use it to automatically update your system's DNO rates.</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | LLFCs</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2025-11-22/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="item"><div>Features</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+    
+  
+</nav>
+    
+<main class="page">
+  <h2>LLFCs</h2>
+  <p><em>2025-11-22</em></p>
+
+  <p>In the <a href="/blog/2025-11-15/">previous post</a> I mentioned that every electricity supply has a
+Line Loss Factor Class (LLFC), which is a 3 character code that reflects the supply's
+characteristics. Here's a screenshot from <a href="https://www.chellow.org/">Chellow</a> showing a
+supply with an import LLFC of 003. If the supply had export, then there'd be a separate
+LLFC for the export side.</p>
+<p><img src="https://www.chellow.org/blog/2025-11-22/screenshot_chellow_era.png" alt="Chellow Era" /></p>
+<p>Each DNO has a set of LLFCs that they maintain, and in this example you can see from the
+first two digits of the MPAN Core that the DNO is 22. Clicking on that LLFC 003 we get:</p>
+<p><img src="https://www.chellow.org/blog/2025-11-22/screenshot_chellow_llfc.png" alt="Chellow LLFC" /></p>
+<p>The description tells us that it's High Voltage and non-domestic. At the bottom there's a
+link to the LAFs which we saw in the previous edition. With our LLFC in hand, we can use
+it to look up several important things:</p>
+<ul>
+<li>The LAF for every half-hour, which let us calculate GSP kWh.</li>
+<li>The DNO tariff, which is the distribution part of a bill.</li>
+<li>The TNUoS charge, which is the standing charge for using the transmission system.</li>
+</ul>
+<p>Let's look up the DNO tariff. We store the DNO tariff spreadsheets centrally in a
+<a href="https://github.com/WessexWater/chellow-rates">GitHub repository</a> from which you can use
+the download button to get the spreadsheet you're interested in:</p>
+<p><img src="https://www.chellow.org/blog/2025-11-22/screenshot_github_download.png" alt="GitHub Download" /></p>
+<p>Opening up the spreadsheet and having a look for 003, we can see the DNO charges:</p>
+<p><img src="https://www.chellow.org/blog/2025-11-22/screenshot_dno_003.png" alt="DNO LLFC 003" /></p>
+<p>That tells us for example that for this supply the DUoS (Distribution Use of System) charge
+for the green period for LLFC 003 is 0.210 p/kWh, or 0.0021 £/kWh. To round things off, I
+can't resist doing a bill check in Chellow to show this:</p>
+<p><img src="https://www.chellow.org/blog/2025-11-22/screenshot_chellow_bill_check.png" alt="Chellow Bill Check" /></p>
+<p>Phew, Chellow's using the right rate, and so is the supplier. In this case the kWh figures
+don't match, which is why there's a difference in £, but that's the subject of another
+article.</p>
+<p>See you next time! ✨</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>
