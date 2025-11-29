@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | ECOES</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2025-11-29/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="item"><div>Features</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+    
+  
+</nav>
+    
+<main class="page">
+  <h2>ECOES</h2>
+  <p><em>2025-11-29</em></p>
+
+  <p>In the <a href="https://www.chellow.org/blog/2025-11-22/">previous post</a> I wrote that each supply
+has an LLFC, or to be more precise, each MPAN has an LLFC, one for import and one for
+export if the supply has an export MPAN. The electricity industry view of all electricity
+supplies and their characteristics (such has LLFC) is stored in a database called
+<a href="https://www.ecoes.co.uk/">ECOES</a>. Any non-domestic customer can sign up to ECOES and ask
+to be granted visibility of the MPANs for which they're a customer.</p>
+<p>There's a web interface to the database which is useful for doing one-off lookups, but the
+really useful thing is the CSV download of all your supplies and their characteristics.
+Here is the info you get on each MPAN:</p>
+<ul>
+<li>MPAN</li>
+<li>Address</li>
+<li>Current Supplier and Registration Effective From Date</li>
+<li>Meter Timeswitch Class and Effective From Date</li>
+<li>Line Loss Factor and Effective From Date</li>
+<li>Profile Class</li>
+<li>Standard Settlement Configuration</li>
+<li>Measurement Class</li>
+<li>Energisation Status</li>
+<li>Data Aggregator</li>
+<li>Data Collector</li>
+<li>Meter Operator and Effective From Date</li>
+<li>GSP Group and Effective From Date</li>
+<li>Distributor name and Dip Id</li>
+<li>Domestic Premises Indicator</li>
+<li>Meter Serial Number and Meter Installation Date</li>
+<li>Meter Type</li>
+<li>Meter Asset Provider</li>
+</ul>
+<p>The industry is undergoing a transition to the DIP (<a href="https://www.elexon.co.uk/what-we-do/about-our-services/data-integration-platform-dip/">Data Integration Platform</a>) and you can see
+this beginning to be introduced into ECOES, with the <code>Distributor Dip Id</code> column showing
+the new DIP id, rather than the old Market Participant Id. The other columns are still on
+the old system though. The ISD (<a href="https://www.elexon.co.uk/bsc/data/industry-standing-data/">Industry Standing Data</a>) replaces the old Market Domain Data, recasting its contents in DIP
+form. The ISD contains a mapping between the old and new systems, which is helpful for
+dealing with the two systems.</p>
+<p><img src="https://www.chellow.org/blog/2025-11-29/stack_of_papers.png" alt="Stack Of Papers" /></p>
+<p>As a programmer of the <a href="https://www.chellow.org/">Chellow</a> system, I'm having to make sure
+that we handle the transition as gracefully as possible. I've opted for a gradual morphing
+of old to new, rather than a big bang approach. The full zipped ISD file comes to over 400
+MB, although that does included the line loss factors.</p>
+<p>Anyway, the ECOES data is incredibly useful for checking the information held in Chellow
+against the industry information. Any discrepancies are flagged up for investigation. In a
+similar way to bill checking, if there's a difference then either Chellow is wrong or the
+industry is wrong or both!</p>
+<p>Finally, in the ECOES CSV output, the following headings are present, but without any data. They are waiting for the transition to the DIP.</p>
+<ul>
+<li>Supplier Dip Id</li>
+<li>Duos Tariff Id</li>
+<li>Duos Tariff Id Effective From Date</li>
+<li>Market Segment Indicator</li>
+<li>Market Segment Indicator Effective From Date</li>
+<li>Data Service Dip Id</li>
+<li>Data Service Effective From Date</li>
+<li>Data Service Effective To Date</li>
+<li>Data Service Mpid</li>
+<li>Metering Service Dip Id</li>
+<li>Metering Service Effective From Date</li>
+<li>Metering Service Effective To Date</li>
+<li>Metering Service Mpid</li>
+</ul>
+<p>See you next time! ✨</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

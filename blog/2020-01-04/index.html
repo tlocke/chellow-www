@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | Recent changes to Chellow</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2020-01-04/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="item"><div>Features</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog</a>
+        <div class="dropdown-content">
+        </div>
+      </div>
+    
+  
+</nav>
+    
+<main class="page">
+  <h2>Recent changes to Chellow</h2>
+  <p><em>2020-01-04</em></p>
+
+  <p>Here are some notes on recent changes to Chellow:</p>
+<ul>
+<li>We've begun to address the vexed question of clock-time and UTC. Clock-time
+is what UK clocks say the time is, and it would seem obvious that this is
+what Chellow should use. However, clock-time has two oddities that make it
+difficult to use. Firstly there's an ambiguous time when the clocks go back,
+and secondly there are missing times when the clocks go forward. For that
+reason, Chellow uses UTC internally to keep things recorded and calculated in
+a predictable and uniform way. However, that means that we're at odds with
+the rest of the world, and so for any input / output between Chellow and the
+user, a certain amount of mental gymnastics has to be performed to translate
+between clock-time and UTC. To make things easier for people, we're aiming to
+use clock-time for all input / output, while still using UTC internally.
+The first thing to transition is the Monthly Duration report. Previously this
+used to be specified in UTC months, but now it's in clock-time months. This
+move to clock-time will carry on until all input / output is in clock-time.</li>
+<li>We fixed a bug in the calculation of reactive power for older meters with only
+four channels.</li>
+<li>The Scenario Runner lets us run 'what if' scenarios, such as projecting the
+new cost if a tariff is changed. Previously we'd used Supplier Contracts for
+storing scenarios, but now they get their own table, and this has allowed us
+to make the navigation simpler, and reduce the number of fields.</li>
+<li>It turns out that the reading frequency is a property of a gas supply and
+that it affects the tariffs that apply. So reading frequency has now been
+added as a property of each gas era.</li>
+<li>There was a bit of a problem when the automatic downloader for Elexon
+RCRC data hung while waiting for data from a socket. A timeout has been
+set for this, so it shouldn't be a problem any more.</li>
+<li>Gas NTS commodity rates have been entered for Oct 2019 to Mar 2020.</li>
+</ul>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

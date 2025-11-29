@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title></title>
+    <link rel="self" type="application/atom+xml" href="https://www.chellow.org/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.chellow.org/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-11-29T00:00:00+00:00</updated>
+    <id>https://www.chellow.org/atom.xml</id>
+    <entry xml:lang="en">
+        <title>ECOES</title>
+        <published>2025-11-29T00:00:00+00:00</published>
+        <updated>2025-11-29T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2025-11-29/"/>
+        <id>https://www.chellow.org/blog/2025-11-29/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2025-11-29/">&lt;p&gt;In the &lt;a href=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-22&#x2F;&quot;&gt;previous post&lt;&#x2F;a&gt; I wrote that each supply
+has an LLFC, or to be more precise, each MPAN has an LLFC, one for import and one for
+export if the supply has an export MPAN. The electricity industry view of all electricity
+supplies and their characteristics (such has LLFC) is stored in a database called
+&lt;a href=&quot;https:&#x2F;&#x2F;www.ecoes.co.uk&#x2F;&quot;&gt;ECOES&lt;&#x2F;a&gt;. Any non-domestic customer can sign up to ECOES and ask
+to be granted visibility of the MPANs for which they&#x27;re a customer.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s a web interface to the database which is useful for doing one-off lookups, but the
+really useful thing is the CSV download of all your supplies and their characteristics.
+Here is the info you get on each MPAN:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;MPAN&lt;&#x2F;li&gt;
+&lt;li&gt;Address&lt;&#x2F;li&gt;
+&lt;li&gt;Current Supplier and Registration Effective From Date&lt;&#x2F;li&gt;
+&lt;li&gt;Meter Timeswitch Class and Effective From Date&lt;&#x2F;li&gt;
+&lt;li&gt;Line Loss Factor and Effective From Date&lt;&#x2F;li&gt;
+&lt;li&gt;Profile Class&lt;&#x2F;li&gt;
+&lt;li&gt;Standard Settlement Configuration&lt;&#x2F;li&gt;
+&lt;li&gt;Measurement Class&lt;&#x2F;li&gt;
+&lt;li&gt;Energisation Status&lt;&#x2F;li&gt;
+&lt;li&gt;Data Aggregator&lt;&#x2F;li&gt;
+&lt;li&gt;Data Collector&lt;&#x2F;li&gt;
+&lt;li&gt;Meter Operator and Effective From Date&lt;&#x2F;li&gt;
+&lt;li&gt;GSP Group and Effective From Date&lt;&#x2F;li&gt;
+&lt;li&gt;Distributor name and Dip Id&lt;&#x2F;li&gt;
+&lt;li&gt;Domestic Premises Indicator&lt;&#x2F;li&gt;
+&lt;li&gt;Meter Serial Number and Meter Installation Date&lt;&#x2F;li&gt;
+&lt;li&gt;Meter Type&lt;&#x2F;li&gt;
+&lt;li&gt;Meter Asset Provider&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The industry is undergoing a transition to the DIP (&lt;a href=&quot;https:&#x2F;&#x2F;www.elexon.co.uk&#x2F;what-we-do&#x2F;about-our-services&#x2F;data-integration-platform-dip&#x2F;&quot;&gt;Data Integration Platform&lt;&#x2F;a&gt;) and you can see
+this beginning to be introduced into ECOES, with the &lt;code&gt;Distributor Dip Id&lt;&#x2F;code&gt; column showing
+the new DIP id, rather than the old Market Participant Id. The other columns are still on
+the old system though. The ISD (&lt;a href=&quot;https:&#x2F;&#x2F;www.elexon.co.uk&#x2F;bsc&#x2F;data&#x2F;industry-standing-data&#x2F;&quot;&gt;Industry Standing Data&lt;&#x2F;a&gt;) replaces the old Market Domain Data, recasting its contents in DIP
+form. The ISD contains a mapping between the old and new systems, which is helpful for
+dealing with the two systems.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-29&#x2F;stack_of_papers.png&quot; alt=&quot;Stack Of Papers&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;As a programmer of the &lt;a href=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;&quot;&gt;Chellow&lt;&#x2F;a&gt; system, I&#x27;m having to make sure
+that we handle the transition as gracefully as possible. I&#x27;ve opted for a gradual morphing
+of old to new, rather than a big bang approach. The full zipped ISD file comes to over 400
+MB, although that does included the line loss factors.&lt;&#x2F;p&gt;
+&lt;p&gt;Anyway, the ECOES data is incredibly useful for checking the information held in Chellow
+against the industry information. Any discrepancies are flagged up for investigation. In a
+similar way to bill checking, if there&#x27;s a difference then either Chellow is wrong or the
+industry is wrong or both!&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, in the ECOES CSV output, the following headings are present, but without any data. They are waiting for the transition to the DIP.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Supplier Dip Id&lt;&#x2F;li&gt;
+&lt;li&gt;Duos Tariff Id&lt;&#x2F;li&gt;
+&lt;li&gt;Duos Tariff Id Effective From Date&lt;&#x2F;li&gt;
+&lt;li&gt;Market Segment Indicator&lt;&#x2F;li&gt;
+&lt;li&gt;Market Segment Indicator Effective From Date&lt;&#x2F;li&gt;
+&lt;li&gt;Data Service Dip Id&lt;&#x2F;li&gt;
+&lt;li&gt;Data Service Effective From Date&lt;&#x2F;li&gt;
+&lt;li&gt;Data Service Effective To Date&lt;&#x2F;li&gt;
+&lt;li&gt;Data Service Mpid&lt;&#x2F;li&gt;
+&lt;li&gt;Metering Service Dip Id&lt;&#x2F;li&gt;
+&lt;li&gt;Metering Service Effective From Date&lt;&#x2F;li&gt;
+&lt;li&gt;Metering Service Effective To Date&lt;&#x2F;li&gt;
+&lt;li&gt;Metering Service Mpid&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;See you next time! ✨&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>LLFCs</title>
+        <published>2025-11-22T00:00:00+00:00</published>
+        <updated>2025-11-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2025-11-22/"/>
+        <id>https://www.chellow.org/blog/2025-11-22/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2025-11-22/">&lt;p&gt;In the &lt;a href=&quot;&#x2F;blog&#x2F;2025-11-15&#x2F;&quot;&gt;previous post&lt;&#x2F;a&gt; I mentioned that every electricity supply has a
+Line Loss Factor Class (LLFC), which is a 3 character code that reflects the supply&#x27;s
+characteristics. Here&#x27;s a screenshot from &lt;a href=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;&quot;&gt;Chellow&lt;&#x2F;a&gt; showing a
+supply with an import LLFC of 003. If the supply had export, then there&#x27;d be a separate
+LLFC for the export side.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-22&#x2F;screenshot_chellow_era.png&quot; alt=&quot;Chellow Era&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Each DNO has a set of LLFCs that they maintain, and in this example you can see from the
+first two digits of the MPAN Core that the DNO is 22. Clicking on that LLFC 003 we get:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-22&#x2F;screenshot_chellow_llfc.png&quot; alt=&quot;Chellow LLFC&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The description tells us that it&#x27;s High Voltage and non-domestic. At the bottom there&#x27;s a
+link to the LAFs which we saw in the previous edition. With our LLFC in hand, we can use
+it to look up several important things:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The LAF for every half-hour, which let us calculate GSP kWh.&lt;&#x2F;li&gt;
+&lt;li&gt;The DNO tariff, which is the distribution part of a bill.&lt;&#x2F;li&gt;
+&lt;li&gt;The TNUoS charge, which is the standing charge for using the transmission system.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Let&#x27;s look up the DNO tariff. We store the DNO tariff spreadsheets centrally in a
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;WessexWater&#x2F;chellow-rates&quot;&gt;GitHub repository&lt;&#x2F;a&gt; from which you can use
+the download button to get the spreadsheet you&#x27;re interested in:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-22&#x2F;screenshot_github_download.png&quot; alt=&quot;GitHub Download&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Opening up the spreadsheet and having a look for 003, we can see the DNO charges:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-22&#x2F;screenshot_dno_003.png&quot; alt=&quot;DNO LLFC 003&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;That tells us for example that for this supply the DUoS (Distribution Use of System) charge
+for the green period for LLFC 003 is 0.210 p&#x2F;kWh, or 0.0021 £&#x2F;kWh. To round things off, I
+can&#x27;t resist doing a bill check in Chellow to show this:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-22&#x2F;screenshot_chellow_bill_check.png&quot; alt=&quot;Chellow Bill Check&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Phew, Chellow&#x27;s using the right rate, and so is the supplier. In this case the kWh figures
+don&#x27;t match, which is why there&#x27;s a difference in £, but that&#x27;s the subject of another
+article.&lt;&#x2F;p&gt;
+&lt;p&gt;See you next time! ✨&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Calculating GSP kWh</title>
+        <published>2025-11-15T00:00:00+00:00</published>
+        <updated>2025-11-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2025-11-15/"/>
+        <id>https://www.chellow.org/blog/2025-11-15/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2025-11-15/">&lt;p&gt;We&#x27;ve finished a run of posts on calculating kWh at NBP. As a reminder, electricity travels
+through the transmission system, then through the distribution system and then ends up
+being measured at the meter, MSP (Meter Supply Point). The transmission losses are known as
+TLMs (Transmission Loss Multipliers) and the distribution losses are known as LAFs (Loss
+Adjustment Factors). Here&#x27;s the formula for NBP for every half-hour:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;(NBP kWh) = (GSP kWh) x TLM
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;In this article we&#x27;ll be focussing on calculating the &lt;em&gt;GSP&lt;&#x2F;em&gt; (Grid Supply Point) kWh, which
+is the amount of electricity entering the distribution system:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;(GSP kWh) = (MSP kWh) x LAF
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-15&#x2F;substation.jpg&quot; alt=&quot;UK Electricity Distribution Substation&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The LAFs are downloadable from the &lt;a href=&quot;https:&#x2F;&#x2F;www.elexonportal.co.uk&#x2F;&quot;&gt;Elexon Portal&lt;&#x2F;a&gt;, and
+they get downloaded every so often into Chellow:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-15&#x2F;screenshot_chellow_elexon_download.png&quot; alt=&quot;Elexon Download in Chellow&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You can see I&#x27;ve blurred out my scripting key in the URL, but it&#x27;s free to get one. You&#x27;ll
+also notice that you need to specify the Participant Code of the DNO that you want to
+download the LAFs for. In this case the code is SOUT, which is the code for DNO 20. A DNO
+has many LLFCs (Line Loss Factor Classes) and every LLFC has a LAF for every half-hour.
+Every supply has an LLFC. Let&#x27;s have a look at the LAFs for DNO 20 and LLFC 033 in Chellow:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-15&#x2F;screenshot_chellow_lafs.png&quot; alt=&quot;LAFs in Chellow&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This tells us that if a supply with LLFC 033 has, say, 1 kWh of consumption at the meter
+between 01:30 and 02:00 on 1st November 2025, the GSP consumption will be 1.074 kWh. When
+we come to do a bill check in Chellow, it&#x27;ll automatically calculate GSP kWh, for example
+here&#x27;s the bill check for the RAB Interim element of a bill, with NBP kWh (which involves
+first finding GSP kWh):&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-15&#x2F;screenshot_chellow_bill_check.png&quot; alt=&quot;Chellow bill check of RAB element of a bill&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;See you next time! ✨&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Forecasting NBP kWh</title>
+        <published>2025-11-08T00:00:00+00:00</published>
+        <updated>2025-11-08T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2025-11-08/"/>
+        <id>https://www.chellow.org/blog/2025-11-08/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2025-11-08/">&lt;p&gt;We&#x27;ve had a run of NBP kWh related posts (
+&lt;a href=&quot;&#x2F;blog&#x2F;2025-10-25&#x2F;&quot;&gt;Calculating NBP&lt;&#x2F;a&gt; and
+&lt;a href=&quot;&#x2F;blog&#x2F;2025-11-15&#x2F;&quot;&gt;NBP Reconciliations&lt;&#x2F;a&gt;, and this post rounds off the series by talking
+about forecasting NBP kWh.&lt;&#x2F;p&gt;
+&lt;p&gt;Even though actual TLMs are specific to the GSP Group and the particular half-hour,
+estimated TLMs (ETLMs) apply to all GSP Groups and cover whole months and sometimes
+multiple months. You can see the ETLMs on an
+&lt;a href=&quot;https:&#x2F;&#x2F;www.elexon.co.uk&#x2F;bsc&#x2F;operational&#x2F;transmission-losses&#x2F;estimated-transmission-loss-adjustments&#x2F;&quot;&gt;Elexon webpage&lt;&#x2F;a&gt;, here&#x27;s a screenshot:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-08&#x2F;screenshot_etlm_elexon.png&quot; alt=&quot;ETLMs Elexon&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Further down on that page is a link to a CSV download of the ETLMs.&lt;&#x2F;p&gt;
+&lt;p&gt;As an aside, it&#x27;s really frustrating that this link can&#x27;t easily be automatically
+downloaded using a script, because it requires cookies, JavaScript etc and various
+protections to prevent automated access. Elexon do have a &#x27;scriptable downloads&#x27; section
+on their portal, and I&#x27;ve written to them asking if they&#x27;d put the ETLMs there. In the
+meantime we download the file to the
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;WessexWater&#x2F;chellow-rates&#x2F;tree&#x2F;main&#x2F;2025&#x2F;electricity&#x2F;etlms&quot;&gt;rate repository&lt;&#x2F;a&gt;. Feel free to make use of this repository, it contains all the industry data that has
+to be manually downloaded, and can be accessed using the
+&lt;a href=&quot;https:&#x2F;&#x2F;docs.github.com&#x2F;en&#x2F;rest&quot;&gt;GitHub API&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-08&#x2F;transmission_lines.jpeg&quot; alt=&quot;Transmission Lines&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Okay, back to ETLMs. When &lt;a href=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;&quot;&gt;Chellow&lt;&#x2F;a&gt; sees that a new ETLM file has
+been added to the rate repository, it downloads it and stores the ETLMs in its database.
+ETLMs are useful for two things, firstly they are used for forecasting, because as you can
+see they go out to the end of this financial year. We can run the virtual bills in Chellow
+for a time in the future and it will calculate the expected costs using the ETLMs and other
+rates that apply at that future time.&lt;&#x2F;p&gt;
+&lt;p&gt;Secondly, ETLMs are useful as a basis for the (initial, before reconciliations) bill from
+the supplier. The first settlement run (with the code &#x27;II&#x27;) is 1 week after the time in
+question, and so suppliers might not be able to use this for all half-hours. What they can
+do instead is use the ETLMs, and then reconcile as updated actuals come in. The key thing
+is that the supplier should use a standard version for TLMs (either ETLMs, or one of the
+settlement runs). Otherwise, without knowing the TLM version we can&#x27;t check that the bills
+are correct.&lt;&#x2F;p&gt;
+&lt;p&gt;See you next time! ✨&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Reconciliations and NBP kWh</title>
+        <published>2025-11-01T00:00:00+00:00</published>
+        <updated>2025-11-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2025-11-01/"/>
+        <id>https://www.chellow.org/blog/2025-11-01/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2025-11-01/">&lt;p&gt;If you have a complex pass-through tariff, you&#x27;ll notice that after the initial charge for
+an element, you&#x27;ll often get one or more subsequent charges. These subsequent charges can
+even arrive months after the contract has ended, which prompts questions from the business.
+It&#x27;s our job to make sure that the total billed amount is correct, and this post discusses
+this in the context of our old friend the TLM (Transmission Loss Multiplier). In a
+&lt;a href=&quot;&#x2F;blog&#x2F;2025-10-11&#x2F;&quot;&gt;previous post&lt;&#x2F;a&gt; I discussed the forthcoming RAB charge, which is billed
+at NBP kWh. Some other pass-through charges calculated at NBP kW are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Elexon Charge&lt;&#x2F;li&gt;
+&lt;li&gt;EII (Energy Intensive Industries)&lt;&#x2F;li&gt;
+&lt;li&gt;CM (Capacity Market)&lt;&#x2F;li&gt;
+&lt;li&gt;BSUoS (Balancing System)&lt;&#x2F;li&gt;
+&lt;li&gt;CfD (Contracts for Difference)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I talked before about &lt;a href=&quot;&#x2F;blog&#x2F;2025-10-25&#x2F;&quot;&gt;how to calculate NBP kWh&lt;&#x2F;a&gt;, but let&#x27;s now dive
+deeper into TLMs. I&#x27;m a programmer working on &lt;a href=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;&quot;&gt;Chellow&lt;&#x2F;a&gt;, and
+here&#x27;s a screenshot of the TLMs file being downloaded into its database:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;screenshot_importer.png&quot; alt=&quot;TLMs being downloaded into Chellow&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You can see the URL of the TLM file, with my scripting key blurred out. It&#x27;s free to
+register for the &lt;a href=&quot;https:&#x2F;&#x2F;www.elexonportal.co.uk&#x2F;&quot;&gt;Elexon Portal&lt;&#x2F;a&gt; and then you get a
+scripting key that&#x27;s unique to you. Here&#x27;s what the TLM file looks like:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-11-01&#x2F;screenshot_tlm_csv.png&quot; alt=&quot;TLM Spreadsheet&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;em&gt;Settlement Date&lt;&#x2F;em&gt; and &lt;em&gt;Settlement Period&lt;&#x2F;em&gt; tell you the half-hour that the TLM is for,
+the &lt;em&gt;Zone&lt;&#x2F;em&gt; maps to the GSP Group and the bit we&#x27;re going to focus on is the
+&lt;em&gt;Settlement Run Type&lt;&#x2F;em&gt;. The run is the version of the data, with later runs being issued as
+the data becomes more accurate. The runs are:&lt;&#x2F;p&gt;
+&lt;dl&gt;
+  &lt;dt&gt;II&lt;&#x2F;dt&gt;
+  &lt;dd&gt;1 Week&lt;&#x2F;dd&gt;
+  &lt;dt&gt;SF&lt;&#x2F;dt&gt;
+  &lt;dd&gt;1 Month&lt;&#x2F;dd&gt;
+  &lt;dt&gt;R1&lt;&#x2F;dt&gt;
+  &lt;dd&gt;2 Months&lt;&#x2F;dd&gt;
+  &lt;dt&gt;R2&lt;&#x2F;dt&gt;
+  &lt;dd&gt;4 Months&lt;&#x2F;dd&gt;
+  &lt;dt&gt;R3&lt;&#x2F;dt&gt;
+  &lt;dd&gt;7 Months&lt;&#x2F;dd&gt;
+  &lt;dt&gt;RF&lt;&#x2F;dt&gt;
+  &lt;dd&gt;14 Months&lt;&#x2F;dd&gt;
+  &lt;dt&gt;DF&lt;&#x2F;dt&gt;
+  &lt;dd&gt;28 Months&lt;&#x2F;dd&gt;
+&lt;&#x2F;dl&gt;
+&lt;p&gt;So for example if a TLM is labelled SF, it means that it was issued one month after the
+date that the TLM was for. You can see where the reconciliations come from now. Say the
+supplier produced the first bill before SF, then when SF occurs the charges passed through
+to the Supplier may have changed, and they may change again in the future, which can result
+in the supplier issuing reconciliations to the customer.&lt;&#x2F;p&gt;
+&lt;p&gt;Where does that leave us as bill validators? Firstly we need to be able to model this, so
+that as soon as a new run comes out we should tell the business the impact this will have
+on the bills and include it in the accrual. Then, when a reconciliation arrives we need to
+check that it&#x27;s accurate. Also, we need to chase things up with the supplier if an expected
+reconciliation doesn&#x27;t arrive, especially if it&#x27;s in our favour 🤑&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, in checking the bills, we need to know which settlement run the supplier used to
+produce the bill. Unfortunately, in my experience, suppliers aren&#x27;t good at doing this,
+but I&#x27;d be interested to know what your experience is.&lt;&#x2F;p&gt;
+&lt;p&gt;See you next time! ✨&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Calculating kWh at NBP</title>
+        <published>2025-10-25T00:00:00+00:00</published>
+        <updated>2025-10-25T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2025-10-25/"/>
+        <id>https://www.chellow.org/blog/2025-10-25/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2025-10-25/">&lt;p&gt;Before we get into NBP kWh, there&#x27;s an update on the &lt;a href=&quot;&#x2F;blog&#x2F;2025-10-18&#x2F;&quot;&gt;previous post&lt;&#x2F;a&gt; on
+finding DNO tariffs. I&#x27;ve heard from the industry body &lt;a href=&quot;https:&#x2F;&#x2F;www.dcusa.co.uk&#x2F;&quot;&gt;DCUSA&lt;&#x2F;a&gt;
+that they&#x27;re working on an API for DNO tariffs, which is great news. They caution that it&#x27;s
+still in the early stages of development though.&lt;&#x2F;p&gt;
+&lt;p&gt;So, on to NBP. Many electricity tariffs are charged at NBP, for example the RAB charge I&#x27;ve &lt;a href=&quot;&#x2F;blog&#x2F;2025-10-11&#x2F;&quot;&gt;talked about previously&lt;&#x2F;a&gt;. With the RAB interim charge, the cost is
+calculated as:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;(RAB Interim Charge £) = (Rab Rate) x (NBP kWh)&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;MSP (Meter Supply Point) kWh is the amount of electricity measured at the meter. The kWh
+you see in the half-hourly data collected from the meter is at MSP. Before getting to the
+meter, the electricity has to go through the transmission and distribution networks.
+Transmission refers to the national grid:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-10-25&#x2F;pylon.jpeg&quot; alt=&quot;Pylon in Thirsk&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;and distribution refers to the local DNO network:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-10-25&#x2F;substation.jpg&quot; alt=&quot;Substation&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;NBP kWh is the amount of electricity before transmission and distribution losses occur. The amount of electricity before distribution losses is known as Grid Supply Point (GSP) kWh:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;GSP kWh = MSP kWh * LAF&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;where the LAF is the Loss Adjustment Factor. NBP kWh is:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;NBP kWh = GSP kWh x TLM&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;where TLM is the Transmission Loss Multiple. We&#x27;ll concentrate on the TLM, which takes us
+from GSP to NBP. There&#x27;s a different TLM for each half-hour, and for each region of the
+country. As a programmer working on Chellow, I&#x27;m pleased that Elexon makes the TLM data
+available for automatic download &lt;a href=&quot;https:&#x2F;&#x2F;www.elexonportal.co.uk&#x2F;&quot;&gt;via their portal&lt;&#x2F;a&gt;. The
+regions of the country are known as GSP Groups, and every electricity supply is within a
+GSP Group. Here&#x27;s a screenshot from Chellow showing the GSP Groups:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-10-25&#x2F;screenshot_gsp_groups.png&quot; alt=&quot;GSP Groups&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Then if we run a virtual bill in Chellow, it would do the calculations for each half-hour
+and give us the following example result:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-10-25&#x2F;screenshot_virtual_bill.png&quot; alt=&quot;RAB Element of Virtual Bill&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve used RAB Interim as an example here, but the same principle applies to any element
+that&#x27;s billed at NBP kWh.&lt;&#x2F;p&gt;
+&lt;p&gt;Hope you enjoyed this post, and see you next time!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Finding DNO Tariffs</title>
+        <published>2025-10-18T00:00:00+00:00</published>
+        <updated>2025-10-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2025-10-18/"/>
+        <id>https://www.chellow.org/blog/2025-10-18/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2025-10-18/">&lt;p&gt;In a pass-through electricity contract, one of the things that is often passed through are
+the Distribution Use of System (DUoS) charges from the Distribution Network Operators
+(&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Distribution_network_operator&quot;&gt;DNOs&lt;&#x2F;a&gt;. The DNOs publish
+their tariffs in an MS-Excel spreadsheet, which they put on their website. An example is
+&lt;a href=&quot;https:&#x2F;&#x2F;www.ssen.co.uk&#x2F;globalassets&#x2F;library&#x2F;charging-statements-sepd&#x2F;202526&#x2F;sepd---schedule-of-charges-and-other-tables---april-2025-v0.3.xlsx&quot;&gt;SSE&#x27;s charging statement for 24&#x2F;25&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;As a developer working on the &lt;a href=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;&quot;&gt;Chellow&lt;&#x2F;a&gt; bill validation system,
+I need to make sure that all the correct DNO tariffs are held in Chellow so that we can
+check that the DNO charges in each bill are correct. Here&#x27;s a screenshot from Chellow
+showing a bill check for DUoS Green:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-10-18&#x2F;bill_check.png&quot; alt=&quot;Bill Check of DUoS Green Element&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The table on the left shows that we&#x27;ve been overcharged by £14.28, and that the rate was
+correct, but the error was in the kWh. Chellow gets the virtual rate from its database of
+DUoS rates, which comes from the DNO&#x27;s spreadsheets.&lt;&#x2F;p&gt;
+&lt;p&gt;One brilliant thing about the DNO&#x27;s spreadsheets is that even though they&#x27;re produced by
+all the different DNOs, they&#x27;re all in the same format, which makes parsing them a lot
+easier. A problem though, is that it&#x27;s difficult to automate finding and downloading the
+spreadsheets, as they&#x27;re scattered over the web. So what we&#x27;ve done is manually maintain a
+repository of DNO spreadsheets at:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;WessexWater&#x2F;chellow-rates&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;WessexWater&#x2F;chellow-rates&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This is freely available for anyone to use. You click on the year you&#x27;re interested in,
+then &lt;code&gt;electricity&lt;&#x2F;code&gt; -&amp;gt; &lt;code&gt;duos&lt;&#x2F;code&gt; -&amp;gt; and the DNO code, and then you should
+find the DNO spreadsheet, which you can download with the &lt;code&gt;Download Raw File&lt;&#x2F;code&gt;
+button. If the DNO you need isn&#x27;t there, just let me know and I&#x27;ll add it in.&lt;&#x2F;p&gt;
+&lt;p&gt;While adding the DNO spreadsheets to the repository is a manual process, it only has to be
+done once, and then each instance of Chellow can automatically import the spreadsheets
+using the &lt;a href=&quot;https:&#x2F;&#x2F;docs.github.com&#x2F;en&#x2F;rest&quot;&gt;GitHub API&lt;&#x2F;a&gt;. The API is free to use, so you&#x27;re
+welcome to use it to automatically update your system&#x27;s DNO rates.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Forecasting RAB costs appearing in December</title>
+        <published>2025-10-11T00:00:00+00:00</published>
+        <updated>2025-10-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2025-10-11/"/>
+        <id>https://www.chellow.org/blog/2025-10-11/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2025-10-11/">&lt;p&gt;The RAB charge is a subsidy for nuclear generation that will appear as a separate item in
+bills for those with a pass-through contract. The first RAB charges will appear in bills
+for December&#x27;s consumption. There are essentially two parts to the charges, Interim and
+Operational. This post focuses on forecasting the Interim element from published forecasts.&lt;&#x2F;p&gt;
+&lt;p&gt;I was pleased to see that the LCCC publish a feed of forecast interim RAB rates via an API. Chellow has a process that automatically checks the LCCC data portal every so often and
+updates feeds for CfD, and so it was relatively easy to add some code that also downloads
+the RAB forecast. I used the JSON format because its a bit easier to process
+programmatically, but here&#x27;s the data in CSV format:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-10-11&#x2F;csv.png&quot; alt=&quot;Screenshot Of CSV File&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The key bits of info for us are the &lt;em&gt;Month&lt;&#x2F;em&gt; column and the &lt;em&gt;Interim_Levy_Rate_GBP_Mwh&lt;&#x2F;em&gt;. I
+programmed Chellow to calculate for each month:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;RAB Interim GBP = Interim_Levy_Rate_GBP_Mwh &#x2F; 1000 x (kWh in NBP)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;A couple of things to note:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The rate is divided by 1000 because it&#x27;s in MWh, and we&#x27;re working in kWh.&lt;&#x2F;li&gt;
+&lt;li&gt;The kWh is at NBP (Notional Balancing Point), which takes into account transmission and distribution losses.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Finally, we run the virtual bill in Chellow for the future and see what we may need to pay
+in the coming months and years.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Element-Level Billing</title>
+        <published>2025-10-09T00:00:00+00:00</published>
+        <updated>2025-10-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2025-10-08/"/>
+        <id>https://www.chellow.org/blog/2025-10-08/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2025-10-08/">&lt;p&gt;An electricity bill is made up of many individual elements, each with a cost attached to
+them. Some examples of elements are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;ccl (Climate change levy)&lt;&#x2F;li&gt;
+&lt;li&gt;eii (Energy intensive industry support payments)&lt;&#x2F;li&gt;
+&lt;li&gt;duos-availability (Distribution cost based on size of connection)&lt;&#x2F;li&gt;
+&lt;li&gt;duos-red (Distribution cost based on peak time consumption)&lt;&#x2F;li&gt;
+&lt;li&gt;bsuos (Balacing System charge)&lt;&#x2F;li&gt;
+&lt;li&gt;...and so on&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Up to now, Chellow stored these elements and their associated backing data as a field in
+the bill. From now on, Chellow separates out each element and gives it its own row. So that
+a bill has several elements attached to it. Each element contains:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name&lt;&#x2F;li&gt;
+&lt;li&gt;Net GBP&lt;&#x2F;li&gt;
+&lt;li&gt;Start Date&lt;&#x2F;li&gt;
+&lt;li&gt;Finish Date&lt;&#x2F;li&gt;
+&lt;li&gt;Breakdown (containing the supporting data such as rate, kWh etc.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Here&#x27;s an examlple of the &lt;em&gt;elements&lt;&#x2F;em&gt; section of the bill page:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2025-10-08&#x2F;screenshot_elements.png&quot; alt=&quot;Screenshot Of Elements&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;One advantage of doing this is that we can properly represent a single bill that has
+elements that are for different periods to the period of the bill. Another advantage is that
+it gives added clarity in bill checking.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Recent changes to Chellow</title>
+        <published>2020-01-04T17:57:00+00:00</published>
+        <updated>2020-01-04T17:57:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2020-01-04/"/>
+        <id>https://www.chellow.org/blog/2020-01-04/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2020-01-04/">&lt;p&gt;Here are some notes on recent changes to Chellow:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;We&#x27;ve begun to address the vexed question of clock-time and UTC. Clock-time
+is what UK clocks say the time is, and it would seem obvious that this is
+what Chellow should use. However, clock-time has two oddities that make it
+difficult to use. Firstly there&#x27;s an ambiguous time when the clocks go back,
+and secondly there are missing times when the clocks go forward. For that
+reason, Chellow uses UTC internally to keep things recorded and calculated in
+a predictable and uniform way. However, that means that we&#x27;re at odds with
+the rest of the world, and so for any input &#x2F; output between Chellow and the
+user, a certain amount of mental gymnastics has to be performed to translate
+between clock-time and UTC. To make things easier for people, we&#x27;re aiming to
+use clock-time for all input &#x2F; output, while still using UTC internally.
+The first thing to transition is the Monthly Duration report. Previously this
+used to be specified in UTC months, but now it&#x27;s in clock-time months. This
+move to clock-time will carry on until all input &#x2F; output is in clock-time.&lt;&#x2F;li&gt;
+&lt;li&gt;We fixed a bug in the calculation of reactive power for older meters with only
+four channels.&lt;&#x2F;li&gt;
+&lt;li&gt;The Scenario Runner lets us run &#x27;what if&#x27; scenarios, such as projecting the
+new cost if a tariff is changed. Previously we&#x27;d used Supplier Contracts for
+storing scenarios, but now they get their own table, and this has allowed us
+to make the navigation simpler, and reduce the number of fields.&lt;&#x2F;li&gt;
+&lt;li&gt;It turns out that the reading frequency is a property of a gas supply and
+that it affects the tariffs that apply. So reading frequency has now been
+added as a property of each gas era.&lt;&#x2F;li&gt;
+&lt;li&gt;There was a bit of a problem when the automatic downloader for Elexon
+RCRC data hung while waiting for data from a socket. A timeout has been
+set for this, so it shouldn&#x27;t be a problem any more.&lt;&#x2F;li&gt;
+&lt;li&gt;Gas NTS commodity rates have been entered for Oct 2019 to Mar 2020.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Missing Bill Elements That Aren&#x27;t Missing</title>
+        <published>2019-11-09T10:38:00+00:00</published>
+        <updated>2019-11-09T10:38:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2019-11-09/"/>
+        <id>https://www.chellow.org/blog/2019-11-09/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2019-11-09/">&lt;p&gt;TL;DR The bill check no longer says that bills are missing when they&#x27;re not.&lt;&#x2F;p&gt;
+&lt;p&gt;A Chellow user (we&#x27;ll call them Jem) said to me, &#x27;When I run the bill check it
+says that some bills are missing when they aren&#x27;t&#x27;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;2019-11-09&#x2F;2019-11-09_screenshot1.png&quot; alt=&quot;Screenshot of bill check link&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Some background: when a bill check is run, you get back a report of the
+differences between the actual bill (received from the supplier) and the
+virtual bill (created by Chellow). You also get a list of missing bill
+elements, for example, say the virtual bill has the element &lt;code&gt;duos-fixed-gbp&lt;&#x2F;code&gt;,
+but the actual bill doesn&#x27;t, then the report will say that the &lt;code&gt;duos-fixed-gbp&lt;&#x2F;code&gt;
+bill is missing.&lt;&#x2F;p&gt;
+&lt;p&gt;So Jem was checking a single
+&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Electricity_billing_in_the_UK#Transmission_charges&quot;&gt;TRIAD&lt;&#x2F;a&gt; bill that spanned an entire year. (It would have been so much easier
+if the supplier had just made it span March, but then we have to deal with
+whatever&#x27;s thrown at us.) So Jem&#x27;s bill only had TRIAD charges in, but all the
+other bills for that supply were present and correct, so the bill check
+should have given a clean bill of health, but in fact it was saying that some
+bills were missing. This kind of false positive was really annoying for Jem
+because it meant that they had to check for something that wasn&#x27;t actually a
+problem.&lt;&#x2F;p&gt;
+&lt;p&gt;To solve the problem we&#x27;ve had to make Chellow generate bills at the
+half-hourly level. That is to say, each half-hour has it&#x27;s own virtual bill.
+That way we can accurately say if there are any missing bills. It was quite a
+big undertaking, but well worth it.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Introduction</title>
+        <published>2019-08-26T14:31:00+00:00</published>
+        <updated>2019-08-26T14:31:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/blog/2019-08-26/"/>
+        <id>https://www.chellow.org/blog/2019-08-26/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/blog/2019-08-26/">&lt;p&gt;Chellow is an open source web application for checking UK electricity and gas
+bills for large organisations. It&#x27;s been used in production since early 2006,
+and so it&#x27;s about time it had its own website, besides the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;WessexWater&#x2F;chellow&quot;&gt;GitHub site&lt;&#x2F;a&gt; where the code is hosted.&lt;&#x2F;p&gt;
+&lt;p&gt;Chellow is suitable for organisations for which one or more of the following is
+true:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Large number of supplies.&lt;&#x2F;li&gt;
+&lt;li&gt;High energy usage.&lt;&#x2F;li&gt;
+&lt;li&gt;Complex contract.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Supplier bills are imported into Chellow, and then they are checked by
+comparing them to virtual bills that are created by Chellow. Any differences
+are due to either the actual bill being incorrect or the virtual bill being
+incorrect. Once errors in the virtual bill have been corrected, any remaining
+differences can be queried with the supplier. The idea is that at the end of
+the process, the organisation can be sure that it&#x27;s paying the correct amount
+for its electricity and gas.&lt;&#x2F;p&gt;
+&lt;p&gt;Some of the features of Chellow are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatic downloading of half-hourly data from data collector sites. The
+data is checked for missing data and estimates and a live list of errors is
+maintained. This can be sent to the data collector so that they can correct
+the errors.&lt;&#x2F;li&gt;
+&lt;li&gt;Based on &lt;a href=&quot;https:&#x2F;&#x2F;www.elexon.co.uk&#x2F;operations-settlement&#x2F;market-domain-data&#x2F;&quot;&gt;Market Domain Data&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;Uses Loss Adjustment Factors from Elexon to calculate GSP kWh.&lt;&#x2F;li&gt;
+&lt;li&gt;Uses Transmission Loss Multipliers from the National Grid to calculated
+NBP kWh.&lt;&#x2F;li&gt;
+&lt;li&gt;Has several built-in tariff elements, including:
+&lt;ul&gt;
+&lt;li&gt;DNUoS&lt;&#x2F;li&gt;
+&lt;li&gt;TNUoS&lt;&#x2F;li&gt;
+&lt;li&gt;AAHEDC&lt;&#x2F;li&gt;
+&lt;li&gt;CCL&lt;&#x2F;li&gt;
+&lt;li&gt;RO&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Chellow also handles exported, generated and displaced electricity.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;As a result of the bill checking process, Chellow ends up with a good dataset
+of electricity that has been used by the organisation. This can then be used
+for monthly reports for finance, purchasing and operations departments. Chellow
+also ends up with a good model of electricity costs, which can be run under
+different scenarios to answer questions such as: how much money would be saved
+if a solar panel were to be installed?&lt;&#x2F;p&gt;
+&lt;p&gt;So that&#x27;s an overview of Chellow, and I&#x27;ve probably missed a lot out. There are
+all sorts of good ideas for this site, such as screenshots, tutorials and
+videos. So if you&#x27;d like to contribute please do.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Newest gallery</title>
+        <published>2003-03-03T00:00:00+00:00</published>
+        <updated>2003-03-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/gallery/third-one/"/>
+        <id>https://www.chellow.org/gallery/third-one/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/gallery/third-one/">&lt;p&gt;This is the most recent gallery. You can click each gallery individually.
+You can click the image and pass with the keyboard arrows or by swiping.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Newer gallery</title>
+        <published>2002-02-01T00:00:00+00:00</published>
+        <updated>2002-02-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/gallery/second-one/"/>
+        <id>https://www.chellow.org/gallery/second-one/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/gallery/second-one/">&lt;p&gt;This is the second gallery. You can click each gallery individually.
+You can click the image and pass with the keyboard arrows or by swiping on a smartphone.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Oldest gallery</title>
+        <published>2001-01-01T00:00:00+00:00</published>
+        <updated>2001-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.chellow.org/gallery/first-one/"/>
+        <id>https://www.chellow.org/gallery/first-one/</id>
+        
+        <content type="html" xml:base="https://www.chellow.org/gallery/first-one/">&lt;p&gt;This is the first gallery. The date is in the title.
+You can click the image and pass with the keyboard arrows or by swiping.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
