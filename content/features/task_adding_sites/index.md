@@ -2,6 +2,7 @@
 title = "Adding Sites"
 date = 2025-11-22T00:00:00Z
 template = "feature_page.html"
+description = "Manual and bulk addition of sites."
 +++
 
 A site in Chellow represents a location where there are gas and / or electricity supplies. So the

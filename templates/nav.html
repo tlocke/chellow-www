@@ -12,17 +12,6 @@
         <a href="{{s.permalink}}" class="dropper 
           {%- if current_path %}{% if current_path is starting_with(s.path) %} active{% endif %}{% endif -%}">{{s.title | safe}} 
         </a>
-        <div class="dropdown-content">
-          {%- for sec in s.subsections -%}
-          {%- set sec = get_section(path=sec) -%}
-          <a href="{{sec.permalink}}"><span>{{sec.title | safe}}</span></a>
-          {% endfor -%}
-          {% if s.extra.no_list_pages %}{# nothing #}{% else %}
-            {%- for page in s.pages -%}
-            <a href="{{page.permalink}}"><span>{{page.title | safe}}</span></a>
-            {% endfor -%}
-          {% endif %}
-        </div>
       </div>
       {%- endif -%}
     {% else %}
