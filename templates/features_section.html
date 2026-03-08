@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block header %}
+{% if section.extra.header_image %}
+<div class="hero" style="background-image: url({{ section.extra.header_image }}); min-height: 30vh;">
+</div>
+{% endif %}
+{% endblock header %}
+
+{% block content %}
+<main class="page">
+    {{ section.content | safe }}
+
+    {% for article in section.pages -%}
+      {% set url = article.permalink -%}
+      <div class="feed-block">
+        <div class="feed-desc">
+          <h3><a href="{{url}}">{{ article.title | safe}}</a></h3>
+          {%- if article.description -%}<p>{{ article.description }}</p>{%- endif %}
+        </div>
+      </div>
+    {%- endfor %}
+
+</main>
+{% endblock content %}

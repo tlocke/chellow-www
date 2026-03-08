@@ -26,7 +26,7 @@ n_articles = 5
 [extra.nav]
 links = [
   # "_index.md",
-  "features.md",
+  "features/_index.md",
   "contribute.md",
   "contact.md",
   "blog/_index.md",
