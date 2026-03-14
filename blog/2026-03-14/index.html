@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | Electricty Accruals</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2026-03-14/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="dropper">Features 
+        </a>
+      </div>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog 
+        </a>
+      </div>
+    
+  
+</nav>
+
+    
+<main class="page">
+  <h2>Electricty Accruals</h2>
+  <p><em>2026-03-14</em></p>
+
+  <p>I expect that many of you, like me, will be involved with producing the electricity accrual each
+month for Finance. The accrual is the cost of electricity that's been used, but not yet billed. For
+Finance, the more accurate the accrual the better.</p>
+<h2 id="half-hourly-meters">Half-hourly Meters</h2>
+<p><img src="https://www.chellow.org/blog/2026-03-14/half_hourly_meter.jpg" alt="Half-hourly Meter" /></p>
+<p>For half-hourly metered supplies this is easy because the HH data is available the day after it is
+recorded. So within the first couple of day of the month we can run the virtual bills on the HH data
+and get a really accurate figure for the cost of the previous month.</p>
+<h2 id="heritage-meters">Heritage Meters</h2>
+<p><img src="https://www.chellow.org/blog/2026-03-14/heritage_meter.jpg" alt="Heritage Meter" /></p>
+<p>For heritage meters, Chellow projects forward the usage based on the most recent actual reads, and
+then the virtual bill uses that projected consumption to calculated the total bill for the month.</p>
+<h2 id="amr-meters">AMR Meters</h2>
+<p>For AMR meters the supplier bills on reads retrieved from the meter. As soon as the reads come in,
+they're sent to the supplier and also made available to the customer. So that means Chellow can
+download the latest AMR reads and use those for the accrual straight away, rather than having to
+wait until they appear in the bills later on in the month.</p>
+<h2 id="other-parts-of-the-accrual">Other Parts of the Accrual</h2>
+<p>So far we've just concentrated on calculating the cost of energy used for the month just gone. Other
+things affect the accrual though:</p>
+<ul>
+<li>Historical bills that we know are inaccurate, but haven't yet been re-billed.</li>
+<li>Historical missing or estimated data that then becomes available.</li>
+<li>Elements such as CfD that are reconciled at a future date.</li>
+</ul>
+<p>These are handled in Chellow using the same method of running a virtual bill which contains the most
+up-to-date view of what we'll eventually be billed. For example, Chellow will use the latest NBP kWh
+figure, which we know before the reconciliation comes in from the supplier. How far you go back
+depends on the particular situation, but at least a couple of years back seems sensible.</p>
+<p>See you next time! ✨</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>
