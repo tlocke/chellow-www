@@ -2,6 +2,7 @@
 title = "Features"
 extra.header_image = "/halo.png"
 template = "features_section.html"
+sort_by = "weight"
 +++
 
 ## What is Chellow?
