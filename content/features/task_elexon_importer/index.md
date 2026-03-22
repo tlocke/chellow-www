@@ -1,9 +1,9 @@
 +++
-title = "Rate Server Importer"
+title = "Elexon Importer"
 date = 2025-11-22T00:00:00Z
 template = "feature_page.html"
-description = "Automatic import of industry files"
-weight = 2
+description = "Automatic import of Elexon data"
+weight = 3
 +++
 
 For most industry data we can use APIs, but some, such as DNO charging statements, have to be

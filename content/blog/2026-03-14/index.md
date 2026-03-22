@@ -1,5 +1,5 @@
 +++
-title = "Electricty Accruals"
+title = "Electricity Accruals"
 date = 2026-03-14T00:00Z
 template = "blog_post.html"
 +++
