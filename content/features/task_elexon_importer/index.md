@@ -6,20 +6,33 @@ description = "Automatic import of Elexon data"
 weight = 3
 +++
 
-For most industry data we can use APIs, but some, such as DNO charging statements, have to be
-manually downloaded. We download them centrally to a repository which we call the
-[Rate Server](https://github.com/WessexWater/chellow-rates).
+Elexon provides a wealth of industry data essential to creating virtual bills. It's free to
+access this data, but you have to create an account on the
+[Elexon Portal](https://www.elexonportal.co.uk/) and then copy the
+scripting key from the [Elexon Profile Page](https://www.elexonportal.co.uk/profile/basic). 
 
-Clicking on the <code>Automatic Importer: Rate Server</code> link takes you to the page for
-importing the files from the rate server into Chellow. The importer runs once a day automatically by
+## Configuration
+
+In Chellow, go to <code>Contracts » Non-Core Contracts » Configuration</code> and enter the key
+like this:
+
+![Configuration](screenshot_configuration.png)
+
+
+## The Importer
+
+Clicking on the <code>Automatic Importer: Elexon Importer</code> link takes you to the page for
+importing the data from Elexon. The importer runs once a day automatically by
 default, so you should rarely have to attend to it.
 
-## Rate Server Importer
+## Running An Import
 
-![Rate Server Importer](screenshot_rate_server_importer.png)
+Now that we've configured the importer with our scripting key, click the <code>Import Now</code>
+button to start an import. Click the browser <code>refresh</code> button to see the latest progress
+in the log:
 
-For a new installation of Chellow it's a good idea to click the <code>Import Now</code> button
-to start an import. Click the browser <code>refresh</code> button to see the latest progress in the
-log. Make sure it completes successfully.
+![Import Running](screenshot_import_running.png)
 
-![Import Completed](screenshot_rate_server_completed.png)
+Make sure it completes successfully.
+
+![Import Completed](screenshot_completed.png)
