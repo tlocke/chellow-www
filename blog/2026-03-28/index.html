@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | LAFs From Industry Standing Data</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2026-03-28/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="dropper">Features 
+        </a>
+      </div>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog 
+        </a>
+      </div>
+    
+  
+</nav>
+
+    
+<main class="page">
+  <h2>LAFs From Industry Standing Data</h2>
+  <p><em>2026-03-28</em></p>
+
+  <p>In a <a href="/blog/2025-11-15/">previous post</a> I talked about distribution losses, and using the LAF (Loss
+Adjustment Factor) to find the GSP kWh from the MSP kWh:</p>
+<pre><code>(GSP kWh) = (MSP kWh) x LAF
+</code></pre>
+<p>There's a published LAF for every half-hour for every LLFC for every DNO, which is an enormous
+amount of data. Chellow used to try and import only the ones it needed, but that got too fiddly so
+now we just import the whole lot. The LAF files from the Elexon Portal in the PTF format look like:</p>
+<p><img src="https://www.chellow.org/blog/2026-03-28/screenshot_lafs.png" alt="Screenshot LAFs" /></p>
+<p>The LAF files can be retrieved from the <a rel="external" href="https://elexonportal.co.uk/">Elexon Portal</a> in two ways,
+API and manual download. The API method is preferable because it can be automated, so that's
+Chellow's primary method. The call to the API is of the form:</p>
+<pre><code>https://downloads.elexonportal.co.uk/svallf/download?key=8jrjfglsjkjj&amp;ldso=LDSO&amp;format=SPF|PTF|UFF|SUM
+</code></pre>
+<p>The drawback is that you can only download the LAFs for the current financial year, but we want to
+load all the available LAFs for future years for forecasting. So to get future years we turn to the
+manual download page:</p>
+<p><img src="https://www.chellow.org/blog/2026-03-28/screenshot_elexon_manual.png" alt="Screenshot Elexon Manual" /></p>
+<p>We manually download the files we need and then put them onto the Rate Server which all Chellow
+instances then automatically download from.</p>
+<p>That all works, but it always bothered me that there was a manual step. Looking at the <a rel="external" href="https://bscdocs.elexon.co.uk/guidance-notes/industry-standing-data">Industry
+Standing Data</a> (which replaces
+the <a rel="external" href="https://elexonportal.co.uk/mddviewer/view">Market Domain Data</a>, I saw that it contains the
+full set of LAFs.</p>
+<p>I've made a start on getting Chellow to use the ISD, but it's still a work in progress. There's an
+API where you can call:</p>
+<pre><code>https://datastore.helix.elexon.co.uk/api/ISD
+</code></pre>
+<p>and it'll download the full set of data. My plan is to get Chellow to automatically check every few
+days for a new version and then import the LAFs if a new version has come out. In time we'll use the
+ISD to completely replace the Market Domain Data, and that'll be another step forward for
+automation.</p>
+<p>See you next time! ✨</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>
