@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | VTP Pass-through Charge</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2026-04-18/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="dropper">Features 
+        </a>
+      </div>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog 
+        </a>
+      </div>
+    
+  
+</nav>
+
+    
+<main class="page">
+  <h2>VTP Pass-through Charge</h2>
+  <p><em>2026-04-18</em></p>
+
+  <p>The
+<a rel="external" href="https://www.elexon.co.uk/bsc/market-entry/becoming-virtual-trading-party/">Virtual Trading Party</a>
+(VTP) pass-through charge came to my attention this week, with the prospect of it appearing in the
+next batch of bills that we receive. I'm still trying to understand the details, so if you have
+anything to add or correct, then please let me know in the comments.</p>
+<p><img src="https://www.chellow.org/blog/2026-04-18/vtp_logo.png" alt="Virtual Trading Party" /></p>
+<p>The things I'm fairly sure on are:</p>
+<ul>
+<li>It only applies to half-hourly metered supplies.</li>
+<li>It's charged at NBP kWh.</li>
+<li>The rate is the same across all supplies on the same contract.</li>
+</ul>
+<p>I'm also assuming it'll be billed monthly, with an estimate and subsequent reconciliation. So as a
+programmer of Chellow, I have two tasks:</p>
+<ul>
+<li>Change the bill parsers to recognize the VTP charge.</li>
+<li>Change virtual bills so that they include the VTP charge.</li>
+</ul>
+<h3 id="bill-parsers">Bill Parsers</h3>
+<p>In Chellow, a batch of bills is created, and then files can be uploaded to the batch, specifying a
+parser:</p>
+<p><img src="https://www.chellow.org/blog/2026-04-18/screenshot_parser.png" alt="Choosing A Parser For A File" /></p>
+<p>These are the parsers that may need updating to parse the VTP charge correctly. What we'll get back
+for each bill are the key bits of information:</p>
+<ul>
+<li>vtp-gbp (the total cost)</li>
+<li>vtp-rate</li>
+<li>vtp-kwh</li>
+<li>start-date</li>
+<li>finish-date</li>
+</ul>
+<h3 id="virtual-bill">Virtual Bill</h3>
+<p>My next task is to make sure the virtual bills for the HH contracts reflect VTP, which means reading
+the rate from the supplier rates, applying the NBP kWh and finding the net cost for the particular
+supply and period in question.</p>
+<p>With the virtual bill done, we can now check bills as they come in, and also run forecasts to see
+how the new charge will affect future costs.</p>
+<p>See you next time! ✨</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

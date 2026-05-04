@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | Elexon TLM File Glitch?</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2026-04-25/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="dropper">Features 
+        </a>
+      </div>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog 
+        </a>
+      </div>
+    
+  
+</nav>
+
+    
+<main class="page">
+  <h2>Elexon TLM File Glitch?</h2>
+  <p><em>2026-04-25</em></p>
+
+  <p>On Thursday last week I saw a message on Chellow alerting me to a problem with the automatic imports
+from Elexon:</p>
+<p><img src="https://www.chellow.org/blog/2026-04-25/screenshot_alert.png" alt="Screenshot Elexon Red Alert" /></p>
+<p>There were two problems:</p>
+<ul>
+<li>The date format had changed.</li>
+<li>There were extra Transmission Loss Factor Zones in the file.</li>
+</ul>
+<p>The date format went from UK style to ISO style, fair enough and ISO is a better choice. Now looking
+at the <a rel="external" href="https://www.elexon.co.uk/bsc/documents/operations-settlement/transmission-losses/consultations/reference-network-mapping-statement-nms-supporting-document/">mapping between TLF Zones and GSP Groups</a>:</p>
+<p><img src="https://www.chellow.org/blog/2026-04-25/screenshot_mapping.png" alt="Zone Mapping" /></p>
+<p>That tells us the geographical area that the TLMs apply to. The problem is that zones 15 and 16 also
+appeared in the file. AI is getting pretty good at electricity industry queries and Claude's opinion
+was that it was a data error. ChatGPT thought that 15 was a special zone and 16 was a national
+average used for interconnectors. I took the pragmatic step of just ignoring 15 and 16 because they
+aren't needed for bill checking.</p>
+<p>This all happened on Thursday / Friday last week, but checking yesterday, the file had reverted back
+to its original format. If you know what happened, please do let me know in the comments.</p>
+<h3 id="side-note-on-ai">Side Note On AI</h3>
+<p><img src="https://www.chellow.org/blog/2026-04-25/screenshot_ai.png" alt="AI" /></p>
+<p>The way I use AI (for both writing like this and programming) is that I'm always the one typing each
+character at the keyboard, and the AI is in a separate tab for various queries that I have. So I
+don't do vibe-coding / writing where the AI types the characters. It's not that I've got any
+objection to vibe-coding in principle, it's just that I feel like we're still at the stage where
+humans have ultimate responsibility and so I probably need to understand everything I'm doing, and
+the easiest way to ensure that is if I type it myself. I'm sure things will change as AI gets
+better, but this is just a snapshot of how I'm working at the moment.</p>
+<p>See you next time! ✨</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/><title>Chellow | Associated MPANs</title>
+
+    <meta name="description" content="">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://www.chellow.org/atom.xml">
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="generator" content="Zola 0.16"/> 
+    <link rel="stylesheet" type="text/css" href="/combine.css"/>
+    <link rel="stylesheet" type="text/css" href="/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/photoswipe.css"/>
+    <link rel="stylesheet" type="text/css" href="/chellow.css"/>
+
+    <link rel="canonical" href="https://www.chellow.org/blog/2026-03-08/"/>
+    <script data-goatcounter="https://tlocke.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body>
+    
+
+
+    <nav class="">
+    <a href="https://www.chellow.org" class="item "><div>Chellow</div></a>
+    
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;features&#x2F;" class="dropper">Features 
+        </a>
+      </div>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;" class="item"><div>Contribute</div></a>
+    <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;" class="item"><div>Contact</div></a>
+    <div class="dropdown">
+        <a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;blog&#x2F;" class="dropper active">Blog 
+        </a>
+      </div>
+    
+  
+</nav>
+
+    
+<main class="page">
+  <h2>Associated MPANs</h2>
+  <p><em>2026-03-08</em></p>
+
+  <p>A large site will often have multiple electricity supplies, each with their own MPAN. However, the
+connection agreement with the DNO will group the MPANs together for charging certain elements.
+These 'grouped together' MPANs are known as associated MPANs. For example, it may be that for a
+group of associated MPANs, the TNUoS charge is only applied to one of the MPANs.</p>
+<p>As a programmer of Chellow I have to make sure that when we calculate the virtual bill for these
+supplies, it models the billing for associated MPANs correctly. We've settled on the solution of
+having a connection agreement item in Chellow, to which multiple supplies can be attached, thus
+associating them. Each connection agreement lists the billing elements that are associated, and to
+which supply it should be billed.</p>
+<p>Here's a screenshot from Chellow of two electricity bills on a site:</p>
+<p><img src="https://www.chellow.org/blog/2026-03-08/screenshot_chellow_site.png" alt="Screenshot Chellow Site" /></p>
+<p>Let's say that these two are associated MPANs in the DNO connection agreement, and the TNUoS charge
+only applies to supply 22 0000 0000 005. We can edit the era of the supply to attach a connection
+agreement:</p>
+<p><img src="https://www.chellow.org/blog/2026-03-08/screenshot_chellow_era_cas.png" alt="Screenshot Chellow Era CAs" /></p>
+<p>Here's the resulting connection agreement page:</p>
+<p><img src="https://www.chellow.org/blog/2026-03-08/screenshot_chellow_ca_1.png" alt="Screenshot Chellow CA 1" /></p>
+<p>Notice that at this stage there's only one attached era and no associated elements. Adding the era
+of the other supply, and adding an associated billing element gives us:</p>
+<p><img src="https://www.chellow.org/blog/2026-03-08/screenshot_chellow_ca_2.png" alt="Screenshot Chellow CA 2" /></p>
+<p>So now we've represented the billing arrangement in Chellow and the virtual bill should now be
+correct, and we can compare it against the actual bill from the supplier to verify that we're being
+billed correctly.</p>
+<p>See you next time! ✨</p>
+
+</main>
+
+    <footer>
+    <div>
+        <div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;">Home</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;about&#x2F;">About</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contact&#x2F;">Contact</a></div><div><a href="https:&#x2F;&#x2F;www.chellow.org&#x2F;contribute&#x2F;">Contribute</a></div>
+    </div>
+
+    <div>
+	<p>
+	  <a href="/atom.xml">Atom Feed <img src="/feed-icon-28x28.e077f1f611f0.png"/></a>
+	</p>
+    </div>
+
+    <div>
+        <p>© Content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a> licence</p>
+    </div>
+</footer>
+
+</body>
+
+</html>
